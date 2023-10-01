@@ -43,7 +43,7 @@ public class Character_Generator {
     }
 
     private HttpURLConnection createConnection() throws IOException {
-        URL url = new URL("https://api.openai.com/v1/engines/text-davinci-003/completions");
+        URL url = new URL("https://api.openai.com/v1/completions");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
