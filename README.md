@@ -51,7 +51,15 @@ These are alot, so an example of one of the characters in the txt file is shown 
 
 
 
-As for our image generation, here is some code written to get the character image player cards.
+As for our image generation from openai, here is some code written to get the character image player cards.
+
+<img width="735" alt="Screenshot 2023-10-01 at 9 34 04 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/ca5e4b35-50ba-4b1a-9864-37ebf1e3a932">
+
+
+And the result of a call is something like this:
+
+
+![Penelope the Wanderlust](https://github.com/HansYolo43/GenShi/assets/112582923/69b742d5-65e2-4a4a-afe0-078ba48e6b63)
 
 
 
