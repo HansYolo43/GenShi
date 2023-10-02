@@ -18,19 +18,12 @@ We aim to use two API's to make this possible:
 
 
 
-
-
-
 2. Google
    https://developers.google.com/explorer-help
 
    We wanted to embed this in the user sign up/login part of our game. However this is not an api that requires focus for our problem domain and general idea. We just thought to add it as part of our plan in the future. Our project relies more on (1)
 
 
-
-Here are some screenshots of us trying out the aformentioned APIS on (API trying website):
-
-(insert pic)
 
 Here are some screenshots of us trying out some GPT requests on https://hoppscotch.io/:
 <img width="1079" alt="Screenshot 2023-10-01 at 9 22 37 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/ef69e17b-be8d-449c-bfed-764e7a260f57">
@@ -42,7 +35,7 @@ Here are some screenshots of us trying out some GPT requests on https://hoppscot
 
 Here is the main java code that generates the stats we need for our randomised characters using GPT:
 
-<img width="986" alt="Screenshot 2023-10-01 at 8 30 22 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/f4559247-e996-40e0-a643-fe4d3bbcb15a">  //main call
+<img width="986" alt="Screenshot 2023-10-01 at 8 30 22 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/f4559247-e996-40e0-a643-fe4d3bbcb15a"> 
 
 However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "genersate name" (along with some other details above that we thought were useful to belabour showing the use of the api)
 
@@ -62,7 +55,6 @@ These are alot, so an example of one of the characters in the txt file is shown 
 
 
 
-(insert pic)
 
 We noticed something that may be a technical constraint:
 1. We needed to generate several images. However, many image apis would restrict us to the number of calls we could make. If we wanted to make more calls, we had to pay a fee.
