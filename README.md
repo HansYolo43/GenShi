@@ -61,7 +61,7 @@ However, another constraint that we noticed was that dall-e was not very good at
 
 
 
-However, to show our idea better, we used a local image generation ai instead. We wil document this better in our techincal contraints part.
+However, to show our idea better, we used a local image generation ai instead. We will document this better in our techincal contraints part.
 
 Our ideal result of the image api we would like to use would be something like this:
 
