@@ -32,6 +32,12 @@ Here are some screenshots of us trying out the aformentioned APIS on (API trying
 
 (insert pic)
 
+Here are some screenshots of us trying out some GPT requests on https://hoppscotch.io/:
+<img width="1079" alt="Screenshot 2023-10-01 at 9 22 37 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/ef69e17b-be8d-449c-bfed-764e7a260f57">
+
+<img width="1085" alt="Screenshot 2023-10-01 at 9 20 48 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/7588f29f-aba9-4a74-b346-26ccbf70f292">
+
+
 
 
 Here is the main java code that generates the stats we need for our randomised characters using GPT:
@@ -40,15 +46,16 @@ Here is the main java code that generates the stats we need for our randomised c
 
 However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "genersate name" (along with some other details above that we thought were useful to belabour showing the use of the api)
 
-<img width="899" alt="Screenshot 2023-10-01 at 8 27 38 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/d217132a-cdc8-4080-abd9-a8b218fa4fd8">  // generate name (part of main call that uses api key)
+<img width="899" alt="Screenshot 2023-10-01 at 8 27 38 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/d217132a-cdc8-4080-abd9-a8b218fa4fd8">  
 
 
 The result of this call is a huge txt files of different characters,descriptions and stats as seen below:
-<img width="1308" alt="Screenshot 2023-10-01 at 8 20 47 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/db61ab0d-7f7a-4b94-94ce-2cc8ee4fa092">  // entrire shot of txt file 
+<img width="1308" alt="Screenshot 2023-10-01 at 8 20 47 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/db61ab0d-7f7a-4b94-94ce-2cc8ee4fa092">  
+
 
 These are alot, so an example of one of the characters in the txt file is shown below for clarity:
 <img width="625" alt="Screenshot 2023-10-01 at 8 22 58 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/9c7c2580-9ed9-4625-8618-2b96477c4f08">
-// sample of one of the lines of code
+
 
 
 
@@ -57,8 +64,11 @@ These are alot, so an example of one of the characters in the txt file is shown 
 
 (insert pic)
 
-For now, we don't see any technical problems blocking our progress. 
+We noticed something that may be a technical constraint:
+1. We needed to generate several images. However, many image apis would restrict us to the number of calls we could make. If we wanted to make more calls, we had to pay a fee.
+   We decided to go with DALL-E for now to visualise our idea. However, help in this area would be greatly appreciated.
 
+   
    
    
 
