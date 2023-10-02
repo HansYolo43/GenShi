@@ -74,7 +74,7 @@ Our ideal result of the image api we would like to use would be something like t
 
 
 
-We noticed something that may be a technical constraint:
+We noticed somethings that may be a technical constraint:
 1. We needed to generate several images. However, many image apis would restrict us to the number of calls we could make. If we wanted to make more calls, we had to pay a fee.
    We decided to go with DALL-E for now to visualise our idea. However, help in this area would be greatly appreciated.
 2. We needed a smarter AI Api to really make our idea shine through. Again, help would be appreciated here. SDXL was very receptive to the openai prompts.
