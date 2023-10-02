@@ -25,7 +25,7 @@ We aim to use two API's to make this possible:
 
 
 
-Here are some screenshots of us trying out some GPT requests on https://hoppscotch.io/:
+Here are some screenshots of us trying out some OpenAi requests on https://hoppscotch.io/:
 <img width="1079" alt="Screenshot 2023-10-01 at 9 22 37 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/ef69e17b-be8d-449c-bfed-764e7a260f57">
 
 <img width="1085" alt="Screenshot 2023-10-01 at 9 20 48 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/7588f29f-aba9-4a74-b346-26ccbf70f292">
@@ -37,7 +37,7 @@ Here is the main java code that generates the stats we need for our randomised c
 
 <img width="986" alt="Screenshot 2023-10-01 at 8 30 22 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/f4559247-e996-40e0-a643-fe4d3bbcb15a"> 
 
-However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "genersate name" (along with some other details above that we thought were useful to belabour showing the use of the api)
+However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "generate name" (along with some other details above that we thought were useful to belabour showing the use of the api)
 
 <img width="899" alt="Screenshot 2023-10-01 at 8 27 38 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/d217132a-cdc8-4080-abd9-a8b218fa4fd8">  
 
@@ -51,6 +51,7 @@ These are alot, so an example of one of the characters in the txt file is shown 
 
 
 
+As for our image generation, here is some code written to get the character image player cards.
 
 
 
