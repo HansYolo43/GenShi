@@ -17,10 +17,14 @@ We aim to use two API's to make this possible:
    We believe GPT will be useful for the random generation of stats and general randomness of our game. DALL- E will be useful for generating images of our randomised playable characters.
 
 
+
+
+
+
 2. Google
    https://developers.google.com/explorer-help
 
-   We wanted to embed this in the user sign up/login part of our game.
+   We wanted to embed this in the user sign up/login part of our game. However this is not an api that requires focus for our problem domain and general idea. We just thought to add it as part of our plan in the future. Our project relies more on (1)
 
 
 
@@ -29,7 +33,26 @@ Here are some screenshots of us trying out the aformentioned APIS on (API trying
 (insert pic)
 
 
-And the example output from running some Java code:
+
+Here is the main java code that generates the stats we need for our randomised characters using GPT:
+
+<img width="986" alt="Screenshot 2023-10-01 at 8 30 22 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/f4559247-e996-40e0-a643-fe4d3bbcb15a">  //main call
+
+However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "genersate name" (along with some other details above that we thought were useful to belabour showing the use of the api)
+
+<img width="899" alt="Screenshot 2023-10-01 at 8 27 38 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/d217132a-cdc8-4080-abd9-a8b218fa4fd8">  // generate name (part of main call that uses api key)
+
+
+The result of this call is a huge txt files of different characters,descriptions and stats as seen below:
+<img width="1308" alt="Screenshot 2023-10-01 at 8 20 47 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/db61ab0d-7f7a-4b94-94ce-2cc8ee4fa092">  // entrire shot of txt file 
+
+These are alot, so an example of one of the characters in the txt file is shown below for clarity:
+<img width="625" alt="Screenshot 2023-10-01 at 8 22 58 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/9c7c2580-9ed9-4625-8618-2b96477c4f08">
+// sample of one of the lines of code
+
+
+
+
 
 
 (insert pic)
