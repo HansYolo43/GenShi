@@ -30,7 +30,7 @@ Here are some screenshots of us trying out some OpenAi requests on https://hopps
 ![hoppscotch](https://github.com/HansYolo43/GenShi/assets/45429986/15e677c5-171d-45e1-a527-88217e04e9eb)
 
 Here is the main java code that generates the stats we need for our randomised characters using GPT:
-<img width="1183" alt="charStatsJavaCode" src="https://github.com/HansYolo43/GenShi/assets/45429986/0cc1c0d5-5c70-4682-a0bb-55bf23e8b9d7">
+<img width="1183" alt="charStatsJavaCode" src="https://github.com/HansYolo43/GenShi/blob/df8f1c96277672292a94b2d848cc170266e952af/images/Screenshot%202023-10-01%20at%208.30.22%20PM.png">
 
 However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "generate name" (along with some other details above that we thought showcase the use of the api)
 
