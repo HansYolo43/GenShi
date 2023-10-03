@@ -43,7 +43,9 @@ However, it is not very obvious that it is using the api, so here is the body of
 
 
 The result of this call is a huge txt files of different characters,descriptions and stats as seen below:
-<img width="1308" alt="Screenshot 2023-10-01 at 8 20 47 PM" src="https://github.com/HansYolo43/GenShi/assets/112582923/db61ab0d-7f7a-4b94-94ce-2cc8ee4fa092">  
+
+![big file](Screenshot 2023-10-01 at 8.20.47 PM.png)
+
 
 
 These are alot, so an example of one of the characters in the txt file is shown below for clarity:
