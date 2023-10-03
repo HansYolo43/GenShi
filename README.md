@@ -26,6 +26,9 @@ We aim to use two API's to make this possible:
 
 
 Here are some screenshots of us trying out some OpenAi requests on https://hoppscotch.io/:
+![hoppscotchRequest](https://github.com/HansYolo43/GenShi/assets/45429986/c421d6b9-deba-4862-b734-f196f8c8fdbf)
+![hoppscotch](https://github.com/HansYolo43/GenShi/assets/45429986/15e677c5-171d-45e1-a527-88217e04e9eb)
+
 ![](images/Screenshot 2023-10-01 at 9.20.48 PM.png)
 
 ![](images/Screenshot 2023-10-01 at 9.22.37 PM.png)
