@@ -35,7 +35,7 @@ Here is the main java code that generates the stats we need for our randomised c
 However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "generate name" (along with some other details above that we thought showcase the use of the api)
 
 
-![](images/Screenshot 2023-10-01 at 8.27.38 PM.png)
+<img width="1130" alt="charStatsOutput" src="https://github.com/HansYolo43/GenShi/blob/d3e35e4951f700b14ca7ecdb21236bd5bb745e23/images/Screenshot%202023-10-01%20at%208.27.38%20PM.png">
 
 
 The result of this call is a huge txt files of different characters,descriptions and stats as seen below:
@@ -43,29 +43,24 @@ The result of this call is a huge txt files of different characters,descriptions
 <img width="1130" alt="charStatsOutput" src="https://github.com/HansYolo43/GenShi/assets/45429986/a1b99238-3c5b-434c-b7ae-519b8a0d73c7">
 
 These are alot, so an example of one of the characters in the txt file is shown below for clarity:
-![](images/Screenshot 2023-10-01 at 8.22.58 PM.png)
+<img width="1130" alt="charStatsOutput" src="https://github.com/HansYolo43/GenShi/blob/d3e35e4951f700b14ca7ecdb21236bd5bb745e23/images/Screenshot%202023-10-01%20at%208.22.58%20PM.png">
 
 
 
 As for our image generation from openai, here is some code written to get the character image player cards using dall-e.
 
-![(images/Screenshot 2023-10-01 at 9.34.04 PM.png)]
+<img width="1130" alt="charStatsOutput" src="https://github.com/HansYolo43/GenShi/blob/d3e35e4951f700b14ca7ecdb21236bd5bb745e23/images/Screenshot%202023-10-01%20at%209.34.04%20PM.png">
 
 However, another constraint that we noticed was that dall-e was not very good at reading prompts. It gave low quality ai images such as the one below:
 
 <img width="1183" alt="charStatsJavaCode" src="https://github.com/HansYolo43/GenShi/blob/f7671d9da9154118e8cc536a581ff2bb7f1c2f1c/py_files/Dall-E_files/Neon%20Moxxi.png">
 
 
-![]()
-
-
-
 However, to show our idea better, we used a local image generation ai instead. We will document this better in our techincal contraints part.
 
 Our ideal result of the image api we would like to use would be something like this:
 
-
-![](py_files/SDXL_Files/Penelope the Wanderlust.png)
+<img width="1130" alt="charStatsOutput" src="https://github.com/HansYolo43/GenShi/blob/d3e35e4951f700b14ca7ecdb21236bd5bb745e23/py_files/SDXL_Files/Penelope%20the%20Wanderlust.png">
 
 (gotten from SDXL. https://stablediffusionxl.com/)
 
