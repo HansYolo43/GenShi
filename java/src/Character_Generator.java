@@ -19,8 +19,12 @@ public class Character_Generator {
         return makeRequest(con, data);
     }
 
-    public String generateDescription(String characterName, String attackName, String defenseName, int defenseStat, int attackStat1, int attackStat2) throws IOException {
-        String prompt = String.format("Describe a character named %s with %s defense stat %d and attack names %s with stats %d or %d in the %s theme:", characterName, defenseName, defenseStat, attackName, attackStat1, attackStat2, themePrompt);
+    public String generateDescription(String characterName, String attackName, String defenseName,
+                                      int defenseStat, int attackStat1, int attackStat2) throws IOException {
+        String prompt = String.format("Describe a character named %s with %s defense stat %d and attack names %s with "
+                        +
+                "stats %d or %d in the %s theme:", characterName, defenseName, defenseStat, attackName, attackStat1,
+                attackStat2, themePrompt);
         HttpURLConnection con = createConnection();
         JSONObject data = createData(prompt, 100);
         return makeRequest(con, data);
@@ -30,14 +34,18 @@ public class Character_Generator {
         BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
         Random rand = new Random();
         for (int i = 0; i < numCharacters; i++) {
-            String characterName = generateName(String.format("Generate a unique %s themed character name:", themePrompt));
+            String characterName = generateName(String.format("Generate a unique %s themed character name:",
+                    themePrompt));
             String attackName = generateName(String.format("Generate a unique %s themed attack name:", themePrompt));
             String defenseName = generateName(String.format("Generate a unique %s themed defense name:", themePrompt));
             int defenseStat = rand.nextInt(100) + 1;
             int attackStat1 = rand.nextInt(100) + 1;
             int attackStat2 = rand.nextInt(100) + 1;
-            String description = generateDescription(characterName, attackName, defenseName, defenseStat, attackStat1, attackStat2);
-            writer.write(String.format("Character Name: %s\nAttack Name: %s\nDefense Name: %s\nDefense Stat: %d\nAttack Stat Options: %d or %d\nCharacter Description: %s\n\n", characterName, attackName, defenseName, defenseStat, attackStat1, attackStat2, description));
+            String description = generateDescription(characterName, attackName, defenseName, defenseStat, attackStat1,
+                    attackStat2);
+            writer.write(String.format("Character Name: %s\nAttack Name: %s\nDefense Name: %s\nDefense Stat: " +
+                    "%d\nAttack Stat Options: %d or %d\nCharacter Description: %s\n\n"
+                    , characterName, attackName, defenseName, defenseStat, attackStat1, attackStat2, description));
         }
         writer.close();
     }
