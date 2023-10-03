@@ -14,7 +14,7 @@ We aim to use two API's to make this possible:
 1. OPENAI API (GPT and DALL - E)
     https://platform.openai.com/docs/introduction/overview
 
-   We believe GPT will be useful for the random generation of stats and general randomness of our game. DALL- E will be useful for generating images of our randomised playable characters. v
+   We believe GPT will be useful for the random generation of stats and general randomness of our game. DALL- E will be useful for generating images of our randomised playable characters. 
 
 
 
