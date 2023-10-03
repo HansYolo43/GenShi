@@ -67,7 +67,7 @@ However, to show our idea better, we used a local image generation ai instead. W
 
 Our ideal result of the image api we would like to use would be something like this:
 
-![](py_files/SDXL_Files/Penelope-the-Wanderlust.png)
+![n](py_files/images/Screenshot 2023-10-01 at 8.27.38 PM.png)
 
 ![Penelope the Wanderlust](https://github.com/HansYolo43/GenShi/assets/112582923/69b742d5-65e2-4a4a-afe0-078ba48e6b63) 
 
