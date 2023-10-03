@@ -44,7 +44,7 @@ However, it is not very obvious that it is using the api, so here is the body of
 
 The result of this call is a huge txt files of different characters,descriptions and stats as seen below:
 
-![big file](py_files/images/Screenshot 2023-10-01 at 8.20.47 PM.png)
+![Screenshot 2023-10-01 at 8.20.47 PM.png]
 
 
 
