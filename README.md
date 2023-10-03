@@ -56,7 +56,7 @@ These are alot, so an example of one of the characters in the txt file is shown 
 
 As for our image generation from openai, here is some code written to get the character image player cards using dall-e.
 
-![](images/Screenshot 2023-10-01 at 9.34.04 PM.png)
+![(images/Screenshot 2023-10-01 at 9.34.04 PM.png)]
 
 However, another constraint that we noticed was that dall-e was not very good at reading prompts. It gave low quality ai images such as the one below:
 
