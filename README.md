@@ -29,18 +29,10 @@ Here are some screenshots of us trying out some OpenAi requests on https://hopps
 ![hoppscotchRequest](https://github.com/HansYolo43/GenShi/assets/45429986/c421d6b9-deba-4862-b734-f196f8c8fdbf)
 ![hoppscotch](https://github.com/HansYolo43/GenShi/assets/45429986/15e677c5-171d-45e1-a527-88217e04e9eb)
 
-![](images/Screenshot 2023-10-01 at 9.20.48 PM.png)
-
-![](images/Screenshot 2023-10-01 at 9.22.37 PM.png)
-
-
-
-
 Here is the main java code that generates the stats we need for our randomised characters using GPT:
+<img width="1183" alt="charStatsJavaCode" src="https://github.com/HansYolo43/GenShi/assets/45429986/0cc1c0d5-5c70-4682-a0bb-55bf23e8b9d7">
 
-![](images/Screenshot 2023-10-01 at 8.30.22 PM.png)
-
-However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "generate name" (along with some other details above that we thought were useful to belabour showing the use of the api)
+However, it is not very obvious that it is using the api, so here is the body of one of the helper methods used within called "generate name" (along with some other details above that we thought showcase the use of the api)
 
 
 ![](images/Screenshot 2023-10-01 at 8.27.38 PM.png)
@@ -48,9 +40,7 @@ However, it is not very obvious that it is using the api, so here is the body of
 
 The result of this call is a huge txt files of different characters,descriptions and stats as seen below:
 
-![](images/Screenshot 2023-10-01 at 8.20.47 PM.png)
-
-
+<img width="1130" alt="charStatsOutput" src="https://github.com/HansYolo43/GenShi/assets/45429986/a1b99238-3c5b-434c-b7ae-519b8a0d73c7">
 
 These are alot, so an example of one of the characters in the txt file is shown below for clarity:
 ![](images/Screenshot 2023-10-01 at 8.22.58 PM.png)
