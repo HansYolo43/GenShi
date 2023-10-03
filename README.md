@@ -53,7 +53,7 @@ As for our image generation from openai, here is some code written to get the ch
 
 However, another constraint that we noticed was that dall-e was not very good at reading prompts. It gave low quality ai images such as the one below:
 
-![](py_files/Dall-E_files/Neon Moxxi.png)
+![]([py_files/Dall-E_files/Neon Moxxi.png](https://github.com/HansYolo43/GenShi/blob/f7671d9da9154118e8cc536a581ff2bb7f1c2f1c/py_files/Dall-E_files/Neon%20Moxxi.png))
 
 
 
