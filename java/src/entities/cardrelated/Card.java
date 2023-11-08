@@ -1,4 +1,4 @@
-package entities;
+package entities.cardrelated;
 
 public abstract class Card {
     private final String name;

@@ -1,4 +1,4 @@
-package entities;
+package entities.cardrelated;
 
 public class EnemyCard extends Card {
     private final int rank;

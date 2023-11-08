@@ -1,4 +1,4 @@
-package entities;
+package entities.cardrelated;
 
 public class Ability {
     private int level;

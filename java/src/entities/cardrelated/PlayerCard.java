@@ -1,4 +1,4 @@
-package entities;
+package entities.cardrelated;
 
 public class PlayerCard extends Card {
     private int rarity; // can you change rarity?
