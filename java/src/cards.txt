@@ -1,0 +1,3 @@
+1|Quik-Slik Khaos|101|Description of Quik-Slik Khaos
+2|Xeno Bladebreaker|102|Description of Xeno Bladebreaker
+3|New Card|103|New card description

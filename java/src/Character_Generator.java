@@ -84,10 +84,10 @@ public class Character_Generator {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        String apiKey = "your-api-key";  // Replace with your API Key
-        String themePrompt = "Cyberpunk";
-        Character_Generator generator = new Character_Generator(apiKey, themePrompt);
-        generator.generateAndSaveCharacters(50, "path-to-your-output-file.txt");  // Replace with the path where you want to save the characters
-    }
+//    public static void main(String[] args) throws IOException {
+//        String apiKey = "your-api-key";  // Replace with your API Key
+//        String themePrompt = "Cyberpunk";
+//        Character_Generator generator = new Character_Generator(apiKey, themePrompt);
+//        generator.generateAndSaveCharacters(50, "path-to-your-output-file.txt");  // Replace with the path where you want to save the characters
+//    }
 }
