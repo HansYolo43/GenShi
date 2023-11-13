@@ -1,6 +1,7 @@
 package data_access;
 
 import Entities.Card;
+import Entities.Stats;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class FileCardDataAccessObject  {
         return card.getId() + "|" +
                 card.getName() + "|" +
                 card.getImageID() + "|" +
+                card.imgpath() + "|" +
+                card.getStats().serializer() + "|" +
 //                card.getAttackStatOptions().stream().map(String::valueOf).collect(Collectors.joining(",")) + "|" +
                 card.getDesc().replace("\n", "\\n");
     }
@@ -42,10 +45,14 @@ public class FileCardDataAccessObject  {
 
         int ImageID = Integer.parseInt(parts[2]);
 
-        String Description =  parts[3];
+        String imgpath = parts[3];
+
+        Stats stats = Stats.deserialize(parts[4]);
+
+        String Description =  parts[5];
 
 
-        return new Card(ID, Name ,ImageID, Description);
+        return new Card(ID, Name ,ImageID,imgpath ,Description, stats);
 
     }
 
@@ -77,10 +84,13 @@ public class FileCardDataAccessObject  {
             while ((line = reader.readLine()) != null) {
                 Card card = deserialize(line);
                 Cards.put(card.getId(), card);
+                CardArray.add(card.getId());
             }
         } catch (IOException e) {
             throw new RuntimeException("Failed to load card data", e);
         }
+
+
     }
 
     public void addCard(Card card) {

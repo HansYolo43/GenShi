@@ -1,6 +1,7 @@
 package app;
 
 import Entities.Card;
+import Entities.Stats;
 import data_access.FileCardDataAccessObject;
 
 import java.io.IOException;
@@ -10,15 +11,18 @@ public class Main {
         try {
             FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("java/src/cards.txt");
 
+            cardDAO.load();
+
             // Adding a new card
-            Card newCard = new Card(3, "New Card", 103, "New card description");
-            Card card1 = new Card(1, "Quik-Slik Khaos", 101, "Description of Quik-Slik Khaos");
-            Card card2 = new Card(2, "Xeno Bladebreaker", 102, "Description of Xeno Bladebreaker");
+            for( int i = 0; i <= 10; i++) {
+                Stats stats = new Stats(23, "idk", 34, 23, 43, 43);
+                Card newCard = new Card(i, "New Card", 109, "Desc", "path", stats);
 
-            cardDAO.addCard(newCard);
-            cardDAO.addCard(card1);
-            cardDAO.addCard(card2);
 
+                cardDAO.addCard(newCard);
+//            cardDAO.addCard(card1);
+//            cardDAO.addCard(card2);
+            }
             // Updating a card
 
             // Setting a new description
