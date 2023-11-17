@@ -12,6 +12,7 @@ public class InMemoryCardDataAccessObject {
         Cards.put(card.getId(), card);
     }
 
+
     public Card getCard(int cardId) {
         return Cards.get(cardId);
     }

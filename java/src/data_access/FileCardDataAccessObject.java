@@ -5,11 +5,12 @@ import Entities.Stats;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class FileCardDataAccessObject  {
+
     private final ArrayList<Integer> CardArray = new ArrayList<>();
 
     private final Map<Integer, Card> Cards = new HashMap<>();
@@ -96,6 +97,27 @@ public class FileCardDataAccessObject  {
     public void addCard(Card card) {
         Cards.put(card.getId(), card);
 
+    }
+
+    public void addCardbyinfo(String name , String Desc, String path,int level,String affinity, int baseHp, int basedef, int  baseatk, int basecrit ) {
+
+
+        Card card = null;
+        int number = 1000000;
+
+        while (!CardArray.contains(number)) {
+            number = random.nextInt(1000000, 9999999);
+            int id = number;
+            int imageid = number;
+
+
+            card = new Card(id, name, imageid, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit));
+
+        }
+
+
+        addCard(card);
+        save();
     }
 
     public Card getCard(int cardId) {
