@@ -22,15 +22,20 @@ public class MainMenuView extends JPanel implements ActionListener, PropertyChan
 
     public MainMenuView(MainMenuViewModel viewModel, MainMenuController mainMenuController) {
         this.viewModel = viewModel;
+        JLabel title = new JLabel("main menu");
+        title.setAlignmentX(CENTER_ALIGNMENT);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(title);
         this.mainMenuController = mainMenuController;
         JPanel buttons = new JPanel();
+        // TODO: check if the order of addition to screen matters
         this.galleryButton = new JButton(MainMenuViewModel.GALLERY_BUTTON_LABEL);
-        buttons.add(galleryButton);
         this.gamblingButton = new JButton(MainMenuViewModel.GAMBLING_BUTTON_LABEL);
-        buttons.add(gamblingButton);
         this.gameButton = new JButton(MainMenuViewModel.GAME_BUTTON_LABEL);
-        buttons.add(gameButton);
         this.logoutButton = new JButton(MainMenuViewModel.LOGOUT_BUTTON_LABEL);
+        buttons.add(gamblingButton);
+        buttons.add(galleryButton);
+        buttons.add(gameButton);
         buttons.add(logoutButton);
 
         this.galleryButton.addActionListener(
@@ -38,6 +43,7 @@ public class MainMenuView extends JPanel implements ActionListener, PropertyChan
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(galleryButton)) {
                             MainMenuState currentState = viewModel.getState(); // not really needed here
+                            System.out.println("Gallery button clicked");
                             mainMenuController.executeGallery();
                         }
                     }

@@ -1,17 +1,32 @@
 package interface_adapter.main_menu;
 
-import interface_adapter.ViewManagerModel;
+import use_case.main_menu.MainMenuInputBoundary;
+import use_case.main_menu.SwitchToGalleryInputBoundary;
 
 public class MainMenuController {
-    private final ViewManagerModel viewManagerModel;
+    final SwitchToGalleryInputBoundary switchToGalleryInteractor;
+    final MainMenuInputBoundary switchToGamblingInteractor;
+    final MainMenuInputBoundary switchToGameInteractor;
+    final MainMenuInputBoundary logoutInteractor;
 
-    public MainMenuController(ViewManagerModel viewManagerModel) {
-        this.viewManagerModel = viewManagerModel;
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, MainMenuInputBoundary switchToGamblingInteractor, MainMenuInputBoundary switchToGameInteractor, MainMenuInputBoundary logoutInteractor) {
+
+        this.switchToGalleryInteractor = switchToGalleryInteractor;
+        this.switchToGamblingInteractor = switchToGamblingInteractor;
+        this.switchToGameInteractor = switchToGameInteractor;
+        this.logoutInteractor = logoutInteractor;
     }
 
-    // Not sure if separating execute is legal in Clean Architecture
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor) {
+
+        this.switchToGalleryInteractor = switchToGalleryInteractor;
+        this.switchToGamblingInteractor = null;
+        this.switchToGameInteractor = null;
+        this.logoutInteractor = null;
+    }
+
     public void executeGallery() {
-        // TODO: Implement
+        switchToGalleryInteractor.execute();
     }
 
     public void executeGambling() {
