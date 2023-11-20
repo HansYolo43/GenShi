@@ -40,21 +40,33 @@ public class GenerateCardDataAccessInterFace {
 
     public Integer generateAndSaveCharacters() throws IOException {
 
+        ArrayList<String> Affinity = new ArrayList<>();
+        Affinity.add("Fire- Additional damage and aggressive tactics.");
+        Affinity.add("Water-Healing properties and fluid defense.");
+        Affinity.add("Earth- Strong defense and stability.");
+        Affinity.add("Air- Speed, evasion, and unpredictable movements.");
+        Affinity.add("Stealthv- Evade detection and gain surprise advantages.");
+        Affinity.add("Deception- Mislead opponents and disrupt their strategies.");
+        Affinity.add("Surprise Attack- Strike first and unexpectedly.");
+        Affinity.add("Spellcasting- Cast powerful spells.");
+        Affinity.add("Enchantment- Enhance abilities of other cards.");
+        Affinity.add("Mystical Manipulation- Alter the course of the game.");
+
+
         Random rand = new Random();
 
 
 
         String characterName = generateName(String.format("Generate a unique %s themed character name:",
                 themePrompt));
-        String attackName = generateName(String.format("Generate a unique %s themed attack name:", themePrompt));
-        String defenseName = generateName(String.format("Generate a unique %s themed defense name:", themePrompt));
-        String affinity = generateName(String.format("Generate a unique  %s affinity", themePrompt));
+        String affinity = Affinity.get(new Random().nextInt(Affinity.size()));
         int level = rand.nextInt(30) + 1;
         int basehp = rand.nextInt(100) + 1;
         int basedef = rand.nextInt(100) + 1;
         int baseatk = rand.nextInt(100) + 1;
         int basecrit = rand.nextInt(100) + 1;
-        String description = generateDescription(characterName, attackName, defenseName);
+//        String description = generateDescription(characterName, attackName, defenseName);
+        String description = "WIP";
 
 
         return dataAccessObject.addCardbyinfo(characterName, description, "Not Assigned", level, affinity, basehp, basedef, baseatk, basecrit);
@@ -88,7 +100,7 @@ public class GenerateCardDataAccessInterFace {
         messages.put(systemMessage);
         messages.put(userMessage);
 
-        data.put("model", "gpt-4");
+        data.put("model", "gpt-3.5-turbo");
         data.put("messages", messages);
         return data;
     }

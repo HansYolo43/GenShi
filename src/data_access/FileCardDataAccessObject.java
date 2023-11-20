@@ -95,6 +95,8 @@ public class FileCardDataAccessObject  {
                 Cards.put(card.getId(), card);
                 CardArray.add(card.getId());
             }
+
+
         } catch (IOException e) {
             throw new RuntimeException("Failed to load card data", e);
         }

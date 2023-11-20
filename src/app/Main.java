@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         String Apikey = "$OPENAI_API_KEY";
-        String theme = "Greek Era";
+        String theme = " loaf of bread wearing white glove";
         FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt");
 
 
@@ -26,9 +26,9 @@ public class Main {
 
         System.out.println(card);
 
-        GenerateImageDataAccessInterface cardop = new GenerateImageDataAccessInterface(Apikey,cardDAO,"Generate an action figure card of" + card.getName());
+        GenerateImageDataAccessInterface cardop = new GenerateImageDataAccessInterface(Apikey,cardDAO);
 
-        cardop.generateImageForCard(card.getId() , card.getDesc());
+        cardop.generateImageForCard(card.getId() , "Create a simple character card of a loaf of bread wearing white glove");
 
 
 

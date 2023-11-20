@@ -12,7 +12,7 @@ public class GenerateImageDataAccessInterface {
     private FileCardDataAccessObject dataAccessObject;
 
 
-    public GenerateImageDataAccessInterface(String apiKey, FileCardDataAccessObject dataAccessObject, String imageprompt) {
+    public GenerateImageDataAccessInterface(String apiKey, FileCardDataAccessObject dataAccessObject) {
         this.apiKey = apiKey;
         this.dataAccessObject = dataAccessObject;
     }
