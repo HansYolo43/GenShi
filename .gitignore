@@ -27,7 +27,6 @@ replay_pid*
 java\src\target
 *.iml
 java/src/target/classes/cards.txt
-java/src/target/classes/pom.xml
 java/src/target/classes/target/classes/pom.xml
 java/src/target/classes/target/classes/target/classes/pom.xml
 java/src/target/classes/target/classes/target/classes/target/classes/pom.xml
@@ -42,5 +41,4 @@ java/src/target/classes/target/classes/target/classes/target/classes/target/clas
 .idea/compiler.xml
 .idea/GenShi.iml
 .idea/misc.xml
-*.xml
 .py_files
