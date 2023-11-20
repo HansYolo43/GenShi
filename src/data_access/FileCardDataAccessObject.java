@@ -9,6 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+
+import java.net.URL;
+import java.net.HttpURLConnection;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.Paths;
+
 public class FileCardDataAccessObject  {
 
     private final ArrayList<Integer> CardArray = new ArrayList<>();
@@ -99,25 +107,34 @@ public class FileCardDataAccessObject  {
 
     }
 
-    public void addCardbyinfo(String name , String Desc, String path,int level,String affinity, int baseHp, int basedef, int  baseatk, int basecrit ) {
+    public Integer addCardbyinfo(String name , String Desc, String path,int level,String affinity, int baseHp, int basedef, int  baseatk, int basecrit ) {
 
-
+        System.out.println("saving");
         Card card = null;
-        int number = 1000000;
+        Random rand = new Random();
+        int number = rand.nextInt(8999999) + 1000000;
 
-        while (!CardArray.contains(number)) {
-            number = random.nextInt(1000000, 9999999);
+
+            System.out.println(number);
+
+
+            number = rand.nextInt(8999999) + 1000000;
             int id = number;
             int imageid = number;
 
 
             card = new Card(id, name, imageid, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit));
 
-        }
+
 
 
         addCard(card);
         save();
+
+        assert card != null;
+        //debug
+
+        return card.getId();
     }
 
     public Card getCard(int cardId) {
@@ -144,5 +161,32 @@ public class FileCardDataAccessObject  {
         if (Cards.containsKey(cardId)) {
             Cards.remove(cardId);
         }
+    }
+
+    public void imagesave(String imgpath, Card card) throws IOException {
+        // Uses to image link to retrieve the image download it and store it in images/
+        // Uses card.id to name the image like 3823.jpg and then updates the card's path attribute
+        Path imageDirectory = Paths.get("src/DB/Images");
+        if (!Files.exists(imageDirectory)) {
+            Files.createDirectories(imageDirectory);
+        }
+
+        // Create the file name using the card ID
+        String fileName = card.getId() + ".jpg";
+        Path imagePath = imageDirectory.resolve(fileName);
+
+        // Download the image
+        URL url = new URL(imgpath);
+        HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
+        httpcon.addRequestProperty("User-Agent", "Mozilla/4.0");
+
+        try (InputStream in = httpcon.getInputStream()) {
+            Files.copy(in, imagePath, StandardCopyOption.REPLACE_EXISTING);
+        }
+
+        // Update the card's image path
+        card.setImgpath(imagePath.toString());
+
+        save();
     }
 }

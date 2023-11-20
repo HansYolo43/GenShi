@@ -41,4 +41,8 @@ public class Card {
         Desc = newDescription;
 
     }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
+    }
 }

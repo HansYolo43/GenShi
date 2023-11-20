@@ -36,3 +36,10 @@ java/src/target/classes/target/classes/target/classes/target/classes/target/clas
 .idea/GenShi.iml
 .idea/misc.xml
 .idea/modules.xml
+.out/production/GenShi/cards.txt
+/out
+/idea
+.idea/compiler.xml
+.idea/GenShi.iml
+.idea/misc.xml
+*.xml
