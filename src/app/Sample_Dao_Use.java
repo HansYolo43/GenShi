@@ -1,15 +1,13 @@
 package app;
 
 import Entities.Card;
-import Entities.Stats;
 import data_access.FileCardDataAccessObject;
 import use_case.generatecard.GenerateCardDataAccessInterFace;
 import use_case.generatecard.GenerateImageDataAccessInterface;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class Main {
+public class Sample_Dao_Use {
     public static void main(String[] args) throws IOException {
 
         String Apikey = "$OPENAI_API_KEY";
