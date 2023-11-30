@@ -1,16 +1,18 @@
 package use_case.generatecard;
 
 import data_access.FileCardDataAccessObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Random;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 
 public class GenerateCardDataAccessInterFace {
@@ -33,7 +35,7 @@ public class GenerateCardDataAccessInterFace {
         return makeRequest(con, data);
     }
 
-    public String generateDescription(String characterName, String attackName, String defenseName) throws IOException {
+    public String generateDescription(String characterName) throws IOException {
         String prompt = String.format("Generate a visual representation of unique %s character from %s in very few words:", characterName, themePrompt);
         System.out.println("desc");
         return makeRequest(createConnection(), createData(prompt));
@@ -65,8 +67,8 @@ public class GenerateCardDataAccessInterFace {
         int basedef = rand.nextInt(100) + 1;
         int baseatk = rand.nextInt(100) + 1;
         int basecrit = rand.nextInt(100) + 1;
-//        String description = generateDescription(characterName, attackName, defenseName);
-        String description = "WIP";
+        String description = generateDescription(characterName);
+
 
 
         return dataAccessObject.addCardbyinfo(characterName, description, "Not Assigned", level, affinity, basehp, basedef, baseatk, basecrit);

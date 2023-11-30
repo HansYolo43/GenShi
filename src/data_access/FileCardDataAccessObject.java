@@ -1,5 +1,6 @@
 package data_access;
 
+import Database.DatabaseHelper;
 import Entities.Card;
 import Entities.Stats;
 
@@ -22,11 +23,19 @@ public class FileCardDataAccessObject {
 
     private final File Cardlist;
 
-    public FileCardDataAccessObject(String csvPath) throws IOException {
+    private String dbPath;
+
+    private DatabaseHelper databaseHelper;
+
+    public FileCardDataAccessObject(String csvPath, String dbPath) throws IOException {
 
         CardInfo = new File(csvPath);
         Cardlist = new File(csvPath);
-        load();
+
+        this.databaseHelper = new DatabaseHelper(dbPath);
+
+
+        loadallcards();
 
     }
 
@@ -34,7 +43,7 @@ public class FileCardDataAccessObject {
         return card.getId() + "|" +
                 card.getName() + "|" +
                 card.getImageID() + "|" +
-                card.imgpath() + "|" +
+                card.getimgpath() + "|" +
                 card.getStats().serializer() + "|" +
 //                card.getAttackStatOptions().stream().map(String::valueOf).collect(Collectors.joining(",")) + "|" +
                 card.getDesc().replace("\n", "\\n");
@@ -60,24 +69,9 @@ public class FileCardDataAccessObject {
 
     }
 
-    public void save() {
-        BufferedWriter writer;
-        try {
-            writer = new BufferedWriter(new FileWriter(CardInfo));
-
-            //Implement this method to write
-
-            for (Card card : Cards.values()) {
-                System.out.println(serialize(card));
-                writer.write(serialize(card));
-                writer.newLine();
-
-            }
-
-            writer.close();
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to save card date", e);
+    public void saveallCards() {
+        for (Card card : Cards.values()) {
+            databaseHelper.insertCardIntoSQLite(card);
         }
     }
 
@@ -99,38 +93,41 @@ public class FileCardDataAccessObject {
 
     }
 
+    public void loadallcards(){
+        ArrayList<Card> loadedCards = DatabaseHelper.loadCards();
+
+        for (Card card : loadedCards) {
+            addCard(card);
+            CardArray.add(card.getId());
+    }
+    }
+
     public void addCard(Card card) {
         Cards.put(card.getId(), card);
 
     }
 
     public Integer addCardbyinfo(String name, String Desc, String path, int level, String affinity, int baseHp, int basedef, int baseatk, int basecrit) {
-
-        System.out.println("saving");
-        Card card = null;
         Random rand = new Random();
-        int number = rand.nextInt(8999999) + 1000000;
+        int id = generateUniqueId(rand);
 
-
-        System.out.println(number);
-
-
-        number = rand.nextInt(8999999) + 1000000;
-        int id = number;
-        int imageid = number;
-
-
-        card = new Card(id, name, imageid, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit));
-
-
+        Card card = new Card(id, name, id, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit));
         addCard(card);
-        save();
+        databaseHelper.insertCardIntoSQLite(card);; // Assuming this method inserts the card into the database
 
-        assert card != null;
-        //debug
-
-        return card.getId();
+        return id;
     }
+
+
+    private int generateUniqueId(Random rand) {
+        int id;
+        do {
+            id = rand.nextInt(8999999) + 1000000;
+        } while (databaseHelper.idExistsInDatabase(id));
+        return id;
+    }
+
+
 
     public Card getCard(int cardId) {
         return Cards.get(cardId);
@@ -180,10 +177,14 @@ public class FileCardDataAccessObject {
         // Update the card's image path
         card.setImgpath(imagePath.toString());
 
-        save();
+
     }
 
     public ArrayList<Integer> CardManager(){
         return CardArray;
+    }
+
+    public void exit(){
+        saveallCards();
     }
 }
