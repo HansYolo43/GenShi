@@ -177,6 +177,8 @@ public class FileCardDataAccessObject {
         // Update the card's image path
         card.setImgpath(imagePath.toString());
 
+        saveallCards();
+
 
     }
 

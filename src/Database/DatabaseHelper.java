@@ -87,7 +87,7 @@ public class DatabaseHelper {
         }
     }
 
-    public void insertCardIntoSQLite( Card card) {
+    public void insertNewCardIntoSQLite( Card card) {
         String sql = "INSERT INTO Cards (Id, Name, ImageID, ImgPath, Description) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -125,6 +125,14 @@ public class DatabaseHelper {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
 
+        }
+    }
+
+    public void insertCardIntoSQLite(Card card){
+        if (cardExistsInDatabase(card.getId())) {
+            updateCardInDatabase(card);
+        } else {
+            insertNewCardIntoSQLite(card);
         }
     }
 
@@ -172,7 +180,60 @@ public class DatabaseHelper {
         return false;
     }
 
+    private boolean cardExistsInDatabase(int id) {
+        String sql = "SELECT Id FROM Cards WHERE Id = ?";
+        try (Connection conn = DatabaseHelper.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    private void updateCardInDatabase(Card card) {
+        String sql = "UPDATE Cards SET Name = ?, ImageID = ?, ImgPath = ?, Description = ? WHERE Id = ?";
+        try (Connection conn = DatabaseHelper.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, card.getName());
+            pstmt.setInt(2, card.getImageID());
+            pstmt.setString(3, card.getimgpath());
+            pstmt.setString(4, card.getDesc());
+            pstmt.setInt(5, card.getId());
+            pstmt.executeUpdate();
+            updateStatsInDatabase(card.getStats(), card.getId());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void updateStatsInDatabase(Stats stats, int cardId) {
+        String sql = "UPDATE Stats SET Level = ?, Affinity = ?, BaseHP = ?, BaseDEF = ?, BaseATK = ?, BaseCRIT = ? WHERE CardID = ?";
+        try (Connection conn = DatabaseHelper.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, cardId);
+            pstmt.setInt(2, stats.getLevel());
+            pstmt.setString(3, stats.getAffinity());
+            pstmt.setInt(4, stats.getBaseHP());
+            pstmt.setInt(5, stats.getBaseDEF());
+            pstmt.setInt(6, stats.getBaseATK());
+            pstmt.setInt(7, stats.getBaseCRIT());
+            // Set other stats fields...
+
+            pstmt.executeUpdate();
+
+            System.out.println("done");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+
+        }
+    }
 }
+
+
 
 
 
