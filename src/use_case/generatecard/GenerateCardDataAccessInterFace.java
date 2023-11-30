@@ -5,6 +5,7 @@ import data_access.FileCardDataAccessObject;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,7 +17,7 @@ public class GenerateCardDataAccessInterFace {
     private final String apiKey;
     private final String themePrompt;
 
-    private FileCardDataAccessObject dataAccessObject;
+    private final FileCardDataAccessObject dataAccessObject;
 
     public GenerateCardDataAccessInterFace(String apiKey, String themePrompt, FileCardDataAccessObject dataAccessObject) {
         this.apiKey = apiKey;
@@ -33,7 +34,7 @@ public class GenerateCardDataAccessInterFace {
     }
 
     public String generateDescription(String characterName, String attackName, String defenseName) throws IOException {
-        String prompt = String.format("Generate a visual representation of unique %s character from %s in very few words:", characterName,  themePrompt);
+        String prompt = String.format("Generate a visual representation of unique %s character from %s in very few words:", characterName, themePrompt);
         System.out.println("desc");
         return makeRequest(createConnection(), createData(prompt));
     }
@@ -54,7 +55,6 @@ public class GenerateCardDataAccessInterFace {
 
 
         Random rand = new Random();
-
 
 
         String characterName = generateName(String.format("Generate a unique %s themed character name:",
@@ -113,7 +113,7 @@ public class GenerateCardDataAccessInterFace {
         }
 
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
             StringBuilder response = new StringBuilder();
             String responseLine;
 

@@ -5,11 +5,11 @@ public class Card {
     private final String name;
     private final int imageID;
     private String imgpath;
-    private Stats stats;
+    private final Stats stats;
     private String Desc;
 
 
-    public Card(int id, String name, int imageID,String Description, String imgpath, Stats stats) {
+    public Card(int id, String name, int imageID, String Description, String imgpath, Stats stats) {
         this.name = name;
         this.imageID = imageID;
         this.stats = stats;
@@ -17,24 +17,34 @@ public class Card {
         this.Desc = Description;
         this.imgpath = imgpath;
     }
+
     public String getName() {
         return name;
     }
 
-    public String imgpath(){return imgpath;}
+    public String getimgpath() {
+        return imgpath;
+    }
+
     public int getImageID() {
         return imageID;
     }
+
     public Stats getStats() {
         return stats;
     }
+
     public String toString() {
         return name + " " + imageID + " " + stats;
     }
 
-    public Integer getId(){return Id; }
+    public Integer getId() {
+        return Id;
+    }
 
-    public String getDesc(){ return Desc; }
+    public String getDesc() {
+        return Desc;
+    }
 
 
     public void setDesc(String newDescription) {

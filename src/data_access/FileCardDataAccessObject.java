@@ -4,20 +4,15 @@ import Entities.Card;
 import Entities.Stats;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
-
-import java.net.URL;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.*;
 
-public class FileCardDataAccessObject  {
+public class FileCardDataAccessObject {
 
     private final ArrayList<Integer> CardArray = new ArrayList<>();
 
@@ -25,9 +20,9 @@ public class FileCardDataAccessObject  {
 
     private final File CardInfo;
 
-    private  final File Cardlist;
+    private final File Cardlist;
 
-    public FileCardDataAccessObject(String csvPath) throws IOException{
+    public FileCardDataAccessObject(String csvPath) throws IOException {
 
         CardInfo = new File(csvPath);
         Cardlist = new File(csvPath);
@@ -58,21 +53,21 @@ public class FileCardDataAccessObject  {
 
         Stats stats = Stats.deserialize(parts[4]);
 
-        String Description =  parts[5];
+        String Description = parts[5];
 
 
-        return new Card(ID, Name ,ImageID,imgpath ,Description, stats);
+        return new Card(ID, Name, ImageID, imgpath, Description, stats);
 
     }
 
-    public void save(){
+    public void save() {
         BufferedWriter writer;
-        try{
+        try {
             writer = new BufferedWriter(new FileWriter(CardInfo));
 
             //Implement this method to write
 
-            for(Card card: Cards.values()){
+            for (Card card : Cards.values()) {
                 System.out.println(serialize(card));
                 writer.write(serialize(card));
                 writer.newLine();
@@ -81,7 +76,7 @@ public class FileCardDataAccessObject  {
 
             writer.close();
 
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException("Failed to save card date", e);
         }
     }
@@ -109,7 +104,7 @@ public class FileCardDataAccessObject  {
 
     }
 
-    public Integer addCardbyinfo(String name , String Desc, String path,int level,String affinity, int baseHp, int basedef, int  baseatk, int basecrit ) {
+    public Integer addCardbyinfo(String name, String Desc, String path, int level, String affinity, int baseHp, int basedef, int baseatk, int basecrit) {
 
         System.out.println("saving");
         Card card = null;
@@ -117,17 +112,15 @@ public class FileCardDataAccessObject  {
         int number = rand.nextInt(8999999) + 1000000;
 
 
-            System.out.println(number);
+        System.out.println(number);
 
 
-            number = rand.nextInt(8999999) + 1000000;
-            int id = number;
-            int imageid = number;
+        number = rand.nextInt(8999999) + 1000000;
+        int id = number;
+        int imageid = number;
 
 
-            card = new Card(id, name, imageid, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit));
-
-
+        card = new Card(id, name, imageid, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit));
 
 
         addCard(card);
@@ -160,9 +153,7 @@ public class FileCardDataAccessObject  {
     }
 
     public void removeCard(int cardId) {
-        if (Cards.containsKey(cardId)) {
-            Cards.remove(cardId);
-        }
+        Cards.remove(cardId);
     }
 
     public void imagesave(String imgpath, Card card) throws IOException {
@@ -190,5 +181,9 @@ public class FileCardDataAccessObject  {
         card.setImgpath(imagePath.toString());
 
         save();
+    }
+
+    public ArrayList<Integer> CardManager(){
+        return CardArray;
     }
 }

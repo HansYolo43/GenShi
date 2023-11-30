@@ -2,14 +2,19 @@ package use_case.generatecard;
 
 import Entities.Card;
 import data_access.FileCardDataAccessObject;
-import java.io.*;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.JSONObject;
+import java.nio.charset.StandardCharsets;
 
 public class GenerateImageDataAccessInterface {
     private final String apiKey;
-    private FileCardDataAccessObject dataAccessObject;
+    private final FileCardDataAccessObject dataAccessObject;
 
 
     public GenerateImageDataAccessInterface(String apiKey, FileCardDataAccessObject dataAccessObject) {
@@ -41,20 +46,16 @@ public class GenerateImageDataAccessInterface {
     }
 
 
-
     private void saveImage(String imagePath, int cardId) throws IOException {
         // Save the image to a local directory
         // Update the card object with the image path
         Card card = dataAccessObject.getCard(cardId);
 
 
-
         if (card != null) {
-            dataAccessObject.imagesave(imagePath , card);
+            dataAccessObject.imagesave(imagePath, card);
         }
     }
-
-
 
 
     // Other methods as needed, e.g., to handle HTTP connection, read/write image data, etc.
@@ -68,6 +69,7 @@ public class GenerateImageDataAccessInterface {
         con.setDoOutput(true);
         return con;
     }
+
     private JSONObject createData(String prompt) {
         JSONObject data = new JSONObject();
         data.put("prompt", prompt);
@@ -84,7 +86,7 @@ public class GenerateImageDataAccessInterface {
             os.write(input, 0, input.length);
         }
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
             StringBuilder response = new StringBuilder();
             String responseLine;
             while ((responseLine = br.readLine()) != null) {
