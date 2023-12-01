@@ -36,9 +36,26 @@ public class GenerateCardDataAccessInterFace {
     }
 
     public String generateDescription(String characterName) throws IOException {
-        String prompt = String.format("Generate a visual representation of unique %s character from %s in very few words:", characterName, themePrompt);
+        String prompt = String.format("Generate a description for this" + characterName + "Be Brief and make sure you it not more than a few lines");
         System.out.println("desc");
         return makeRequest(createConnection(), createData(prompt));
+    }
+
+    public String generateRarity() {
+        Random rand = new Random();
+        double chance = rand.nextDouble();
+
+        if (chance < 0.005) { // 0.5% chance for Mythic
+            return "Mythic";
+        } else if (chance < 0.015) { // Additional 1% chance for Legendary (1.5% - 0.5%)
+            return "Legendary";
+        } else if (chance < 0.065) { // Additional 5% chance for Epic (6.5% - 1.5%)
+            return "Epic";
+        } else if (chance < 0.265) { // Additional 20% chance for Rare (26.5% - 6.5%)
+            return "Rare";
+        } else {
+            return "Common"; // All remaining chances
+        }
     }
 
     public Integer generateAndSaveCharacters() throws IOException {
@@ -67,11 +84,12 @@ public class GenerateCardDataAccessInterFace {
         int basedef = rand.nextInt(100) + 1;
         int baseatk = rand.nextInt(100) + 1;
         int basecrit = rand.nextInt(100) + 1;
-        String description = generateDescription(characterName);
 
+        String description = generateDescription("Generate a description for this" + characterName + "Be Brief and make sure you it not more than a few lines");
 
+        String rarity = generateRarity();
 
-        return dataAccessObject.addCardbyinfo(characterName, description, "Not Assigned", level, affinity, basehp, basedef, baseatk, basecrit);
+        return dataAccessObject.addCardbyinfo(characterName, description, "Not Assigned", level, affinity, basehp, basedef, baseatk, basecrit, rarity);
 
     }
 

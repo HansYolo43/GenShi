@@ -107,11 +107,11 @@ public class FileCardDataAccessObject {
 
     }
 
-    public Integer addCardbyinfo(String name, String Desc, String path, int level, String affinity, int baseHp, int basedef, int baseatk, int basecrit) {
+    public Integer addCardbyinfo(String name, String Desc, String path, int level, String affinity, int baseHp, int basedef, int baseatk, int basecrit, String rarity) {
         Random rand = new Random();
         int id = generateUniqueId(rand);
 
-        Card card = new Card(id, name, id, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit));
+        Card card = new Card(id, name, id, Desc, path, new Stats(level, affinity, baseHp, basedef, baseatk, basecrit, rarity));
         addCard(card);
         databaseHelper.insertCardIntoSQLite(card);; // Assuming this method inserts the card into the database
 
@@ -119,7 +119,7 @@ public class FileCardDataAccessObject {
     }
 
 
-    private int generateUniqueId(Random rand) {
+    public int generateUniqueId(Random rand) {
         int id;
         do {
             id = rand.nextInt(8999999) + 1000000;

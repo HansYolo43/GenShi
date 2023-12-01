@@ -5,7 +5,7 @@ public class Card {
     private final String name;
     private final int imageID;
     private String imgpath;
-    private final Stats stats;
+    private Stats stats;
     private String Desc;
 
 
@@ -46,6 +46,11 @@ public class Card {
         return Desc;
     }
 
+    public void setrarity(String rarity){
+        stats.setRarity(rarity);
+
+    }
+
 
     public void setDesc(String newDescription) {
         Desc = newDescription;
@@ -55,4 +60,6 @@ public class Card {
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
     }
+
+
 }

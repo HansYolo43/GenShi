@@ -23,6 +23,8 @@ public class DatabaseHelper {
                 DatabaseMetaData meta = conn.getMetaData();
                 System.out.println("The driver name is " + meta.getDriverName());
                 System.out.println("A new database has been created.");
+
+                createTables();
             }
 
         } catch (SQLException e) {
@@ -59,7 +61,7 @@ public class DatabaseHelper {
 
         executeSql(sql);
 
-        System.out.println("stat");
+
     }
 
     private static void createCardsTable() {
@@ -75,7 +77,7 @@ public class DatabaseHelper {
 
         executeSql(sql);
 
-        System.out.println("maybe");
+
     }
 
     private static void executeSql( String sql) {
@@ -100,14 +102,14 @@ public class DatabaseHelper {
 
             insertStatsIntoSQLite(card.getStats(), card.getId());
 
-            System.out.println("Done");
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     private void insertStatsIntoSQLite( Stats stats, int cardId) {
-        String sql = "INSERT INTO Stats (CardID, Level, Affinity, BaseHP, BaseDEF, BaseATK, BaseCRIT) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Stats (CardID, Level, Affinity, BaseHP, BaseDEF, BaseATK, BaseCRIT,Rarity) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
         try (Connection conn = DatabaseHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, cardId);
@@ -117,11 +119,12 @@ public class DatabaseHelper {
             pstmt.setInt(5, stats.getBaseDEF());
             pstmt.setInt(6, stats.getBaseATK());
             pstmt.setInt(7, stats.getBaseCRIT());
+            pstmt.setString(8, stats.getRarity());
             // Set other stats fields...
 
             pstmt.executeUpdate();
 
-            System.out.println("done");
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
 
@@ -154,7 +157,8 @@ public class DatabaseHelper {
 
                 Stats stats = new Stats(rs.getInt("Level"), rs.getString("Affinity"),
                         rs.getInt("BaseHP"), rs.getInt("BaseDEF"),
-                        rs.getInt("BaseATK"), rs.getInt("BaseCRIT"));
+                        rs.getInt("BaseATK"), rs.getInt("BaseCRIT"), rs.getString("Rarity"));
+
 
                 Card card = new Card(id, name, imageId, imgPath, desc, stats);
                 cards.add(card);
@@ -200,8 +204,8 @@ public class DatabaseHelper {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, card.getName());
             pstmt.setInt(2, card.getImageID());
-            pstmt.setString(3, card.getimgpath());
-            pstmt.setString(4, card.getDesc());
+            pstmt.setString(3, card.getDesc());
+            pstmt.setString(4, card.getimgpath());
             pstmt.setInt(5, card.getId());
             pstmt.executeUpdate();
             updateStatsInDatabase(card.getStats(), card.getId());
@@ -211,21 +215,23 @@ public class DatabaseHelper {
     }
 
     private void updateStatsInDatabase(Stats stats, int cardId) {
-        String sql = "UPDATE Stats SET Level = ?, Affinity = ?, BaseHP = ?, BaseDEF = ?, BaseATK = ?, BaseCRIT = ? WHERE CardID = ?";
+        String sql = "UPDATE Stats SET Level = ?, Affinity = ?, BaseHP = ?, BaseDEF = ?, BaseATK = ?, BaseCRIT = ?, Rarity = ? WHERE CardID = ?";
         try (Connection conn = DatabaseHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, cardId);
-            pstmt.setInt(2, stats.getLevel());
-            pstmt.setString(3, stats.getAffinity());
-            pstmt.setInt(4, stats.getBaseHP());
-            pstmt.setInt(5, stats.getBaseDEF());
-            pstmt.setInt(6, stats.getBaseATK());
-            pstmt.setInt(7, stats.getBaseCRIT());
+            pstmt.setInt(1, stats.getLevel());
+            pstmt.setString(2, stats.getAffinity());
+            pstmt.setInt(3, stats.getBaseHP());
+            pstmt.setInt(4, stats.getBaseDEF());
+            pstmt.setInt(5, stats.getBaseATK());
+            pstmt.setInt(6, stats.getBaseCRIT());
+            pstmt.setString(7, stats.getRarity());
+            pstmt.setInt(8, cardId);
             // Set other stats fields...
+
 
             pstmt.executeUpdate();
 
-            System.out.println("done");
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
 

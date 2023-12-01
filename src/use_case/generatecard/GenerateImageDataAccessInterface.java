@@ -23,7 +23,7 @@ public class GenerateImageDataAccessInterface {
     }
 
     public void generateImageForCard(int cardId, String prompt) throws IOException {
-        String imagelink = requestImageFromDallE(prompt);
+        String imagelink = requestImageFromDallE("Generate a simple character card"  + prompt);
         saveImage(imagelink, cardId);
     }
 
