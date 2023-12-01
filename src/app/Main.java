@@ -12,6 +12,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Main {
+        Syst=====
     public static void main(String[] args) {
         System.out.println("Hello, world!");
         JFrame application = new JFrame("Main Menu Test");
@@ -44,10 +45,13 @@ public class Main {
 
 
 
+
         viewManagerModel.setActiveView(galleryView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
         application.setVisible(true);
-    }
+
+
 }
+

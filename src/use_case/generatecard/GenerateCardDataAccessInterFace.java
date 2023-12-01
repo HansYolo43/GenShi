@@ -1,22 +1,25 @@
 package use_case.generatecard;
 
 import data_access.FileCardDataAccessObject;
-
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Random;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Random;
 
 
 public class GenerateCardDataAccessInterFace {
     private final String apiKey;
     private final String themePrompt;
 
-    private FileCardDataAccessObject dataAccessObject;
+    private final FileCardDataAccessObject dataAccessObject;
 
     public GenerateCardDataAccessInterFace(String apiKey, String themePrompt, FileCardDataAccessObject dataAccessObject) {
         this.apiKey = apiKey;
@@ -32,10 +35,27 @@ public class GenerateCardDataAccessInterFace {
         return makeRequest(con, data);
     }
 
-    public String generateDescription(String characterName, String attackName, String defenseName) throws IOException {
-        String prompt = String.format("Generate a visual representation of unique %s character from %s in very few words:", characterName,  themePrompt);
+    public String generateDescription(String characterName) throws IOException {
+        String prompt = String.format("Generate a description for this" + characterName + "Be Brief and make sure you it not more than a few lines");
         System.out.println("desc");
         return makeRequest(createConnection(), createData(prompt));
+    }
+
+    public String generateRarity() {
+        Random rand = new Random();
+        double chance = rand.nextDouble();
+
+        if (chance < 0.005) { // 0.5% chance for Mythic
+            return "Mythic";
+        } else if (chance < 0.015) { // Additional 1% chance for Legendary (1.5% - 0.5%)
+            return "Legendary";
+        } else if (chance < 0.065) { // Additional 5% chance for Epic (6.5% - 1.5%)
+            return "Epic";
+        } else if (chance < 0.265) { // Additional 20% chance for Rare (26.5% - 6.5%)
+            return "Rare";
+        } else {
+            return "Common"; // All remaining chances
+        }
     }
 
     public Integer generateAndSaveCharacters() throws IOException {
@@ -56,7 +76,6 @@ public class GenerateCardDataAccessInterFace {
         Random rand = new Random();
 
 
-
         String characterName = generateName(String.format("Generate a unique %s themed character name:",
                 themePrompt));
         String affinity = Affinity.get(new Random().nextInt(Affinity.size()));
@@ -65,11 +84,12 @@ public class GenerateCardDataAccessInterFace {
         int basedef = rand.nextInt(100) + 1;
         int baseatk = rand.nextInt(100) + 1;
         int basecrit = rand.nextInt(100) + 1;
-//        String description = generateDescription(characterName, attackName, defenseName);
-        String description = "WIP";
 
+        String description = generateDescription("Generate a description for this" + characterName + "Be Brief and make sure you it not more than a few lines");
 
-        return dataAccessObject.addCardbyinfo(characterName, description, "Not Assigned", level, affinity, basehp, basedef, baseatk, basecrit);
+        String rarity = generateRarity();
+
+        return dataAccessObject.addCardbyinfo(characterName, description, "Not Assigned", level, affinity, basehp, basedef, baseatk, basecrit, rarity);
 
     }
 
@@ -113,7 +133,7 @@ public class GenerateCardDataAccessInterFace {
         }
 
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
             StringBuilder response = new StringBuilder();
             String responseLine;
 

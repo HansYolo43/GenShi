@@ -2,6 +2,7 @@
 .DS_Store
 *.class
 
+
 # Log file
 *.log
 
@@ -43,3 +44,9 @@ java/src/target/classes/target/classes/target/classes/target/classes/target/clas
 .idea/GenShi.iml
 .idea/misc.xml
 .py_files
+src/target
+.idea
+.idea/modules.xml
+.idea/misc.xml
+
+.DS_Store
