@@ -4,6 +4,7 @@ package app;
 import Database.DatabaseHelper;
 import Entities.Card;
 import Entities.CardManager;
+import Entities.User;
 import data_access.FileCardDataAccessObject;
 import use_case.generatecard.GenerateCardDataAccessInterFace;
 import use_case.generatecard.GenerateImageDataAccessInterface;
@@ -15,7 +16,7 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-            String Apikey = "api-key";
+        String Apikey = "api-key";
 //        String theme = "slice of cake wearing a brown hat ";
 //        FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/test.db");
 //
@@ -42,11 +43,8 @@ public class Main {
 //
 
 
-
-
 //
 //        createNewDatabase("test.db");
-
 
 
 //        String dbpath = "src/db/test.db";
@@ -73,76 +71,87 @@ public class Main {
 //        }
 
 
+        FileCardDataAccessObject DAO = new FileCardDataAccessObject("src/db/cards.txt", "src/db/cards.db");
+
+        ArrayList<Integer> Array = DAO.CardManager();
+
+
+//        for (Integer i: Array){
+//
+//            Card card = DAO.getCard(i);
+//
+//            if(Objects.equals(card.getDesc(), "WIP")){
+//                GenerateCardDataAccessInterFace G_card = new GenerateCardDataAccessInterFace(Apikey ,card.getName() ,DAO);
+//
+//
+//                card.setDesc(G_card.generateDescription(card.getName()));
+//
+//                System.out.println(card.getName()+ " Description Generated");
+//
+//            } else if (Objects.equals(card.getimgpath(), "Not Assigned")) {
+//                GenerateImageDataAccessInterface G_image = new GenerateImageDataAccessInterface(Apikey , DAO);
+//
+//                G_image.generateImageForCard(card.getId(), card.getName());
+//
+//                System.out.println(card.getName() + "Image generated");
+//
+//            } else if (card.getStats().getRarity() == null) {
+//                GenerateCardDataAccessInterFace G_card = new GenerateCardDataAccessInterFace(Apikey ,card.getName() ,DAO);
+//
+//                card.setrarity(G_card.generateRarity());
+//
+//                System.out.println(card.getName() + " Rarity updated");
+//
+//                System.out.println(card.getDesc() + "Description");
+//
+//                System.out.println(card.getimgpath()  + "Path");
+//
+//            }else {
+//
+//                System.out.println(card.getStats().getRarity());
+//
+//                System.out.println("Nothing");
+//
+//                System.out.println(card.getDesc() + "Description");
+//
+//                System.out.println(card.getimgpath()  + "Path");
+//
+//
+//            }
+
+        DAO.exit();
+
+        ArrayList<Integer> ownedCards = new ArrayList<>();
+        ownedCards.add(1004); // Example card IDs
+        ownedCards.add(1005);
+        User newUser = new User(1, ownedCards, 5, 1000, "TestUser", "password123");
+
+        // Save the user to the database
+        DAO.addUser(newUser);
+
+        // Load the user from the database
+        User loadedUser = DAO.getUser("TestUser");
+
+        // Display user details
+        if (loadedUser != null) {
 
 
 
+            DAO.addUser(loadedUser);
 
 
+            System.out.println("User ID: " + loadedUser.getUserid());
+            System.out.println("Username: " + loadedUser.getUsername());
+            System.out.println("User Level: " + loadedUser.getUserlevel());
+            System.out.println("Currency: " + loadedUser.getCurrency());
+            System.out.println("Owned Cards: " + loadedUser.getCards_owned());
 
 
-        FileCardDataAccessObject DAO = new FileCardDataAccessObject("src/db/cards.txt","src/db/cards.db" );
-
-        ArrayList<Integer> Array  = DAO.CardManager();
-
-
-        for (Integer i: Array){
-
-            Card card = DAO.getCard(i);
-
-            if(Objects.equals(card.getDesc(), "WIP")){
-                GenerateCardDataAccessInterFace G_card = new GenerateCardDataAccessInterFace(Apikey ,card.getName() ,DAO);
-
-
-                card.setDesc(G_card.generateDescription(card.getName()));
-
-                System.out.println(card.getName()+ " Description Generated");
-
-            } else if (Objects.equals(card.getimgpath(), "Not Assigned")) {
-                GenerateImageDataAccessInterface G_image = new GenerateImageDataAccessInterface(Apikey , DAO);
-
-                G_image.generateImageForCard(card.getId(), card.getName());
-
-                System.out.println(card.getName() + "Image generated");
-
-            } else if (card.getStats().getRarity() == null) {
-                GenerateCardDataAccessInterFace G_card = new GenerateCardDataAccessInterFace(Apikey ,card.getName() ,DAO);
-
-                card.setrarity(G_card.generateRarity());
-
-                System.out.println(card.getName() + " Rarity updated");
-
-                System.out.println(card.getDesc() + "Description");
-
-                System.out.println(card.getimgpath()  + "Path");
-
-            }else {
-
-                System.out.println(card.getStats().getRarity());
-
-                System.out.println("Nothing");
-
-                System.out.println(card.getDesc() + "Description");
-
-                System.out.println(card.getimgpath()  + "Path");
-
-
-            }
-
-            DAO.exit();
-
+        } else {
+            System.out.println("User not found.");
         }
 
 
-
-
-
-
-
-
-//
-//
     }
-
-
 
 }

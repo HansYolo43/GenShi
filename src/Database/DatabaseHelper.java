@@ -2,9 +2,11 @@ package Database;
 
 import Entities.Card;
 import Entities.Stats;
+import Entities.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DatabaseHelper {
 
@@ -237,6 +239,110 @@ public class DatabaseHelper {
 
         }
     }
+
+    //User Implementation
+
+    private static void createuserTables() {
+        String createUserTableSQL = "CREATE TABLE IF NOT EXISTS Users (...);";
+        String createUserCardsTableSQL = "CREATE TABLE IF NOT EXISTS UserCards (...);";
+        executeSql(createUserTableSQL);
+        executeSql(createUserCardsTableSQL);
+    }
+
+    public static void saveUser(User user) {
+        String sql = "INSERT INTO Users (UserID, Username, Password, UserLevel, Currency) VALUES (?, ?, ?, ?, ?) "
+                + "ON CONFLICT(UserID) DO UPDATE SET "
+                + "Username = excluded.Username, "
+                + "Password = excluded.Password, "
+                + "UserLevel = excluded.UserLevel, "
+                + "Currency = excluded.Currency;";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, user.getUserid());
+            pstmt.setString(2, user.getUsername());
+            pstmt.setString(3, user.getPassword());
+            pstmt.setInt(4, user.getUserlevel());
+            pstmt.setInt(5, user.getCurrency());
+
+            pstmt.executeUpdate();
+
+            // Save the user's cards
+            saveUserCards(user.getUserid(), user.getCards_owned());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static User loadUser(String Username) {
+        String sql = "SELECT * FROM Users WHERE Username = ?";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, Username);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    Integer userId = rs.getInt("UserID");
+                    String username = rs.getString("Username");
+                    String password = rs.getString("Password");
+                    int userLevel = rs.getInt("UserLevel");
+                    int currency = rs.getInt("Currency");
+
+                    ArrayList<Integer> cardsOwned = loadUserCards(userId);
+
+
+                    return new User(userId, cardsOwned, userLevel, currency, username, password);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    public static void saveUserCards(int userId, ArrayList<Integer> cardsOwned) {
+        // Delete existing records for the user
+
+
+        // Insert new records
+        String sqlInsert = "INSERT INTO UserCards (UserID, CardID) VALUES (?, ?)";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmtInsert = conn.prepareStatement(sqlInsert)) {
+
+
+            // Insert new cards
+            for (Integer cardId : cardsOwned) {
+                pstmtInsert.setInt(1, userId);
+                pstmtInsert.setInt(2, cardId);
+                pstmtInsert.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static ArrayList<Integer> loadUserCards(int userId) {
+        ArrayList<Integer> cardsOwned = new ArrayList<>();
+        String sql = "SELECT CardID FROM UserCards WHERE UserID = ?";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int cardId = rs.getInt("CardID");
+                    cardsOwned.add(cardId);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return cardsOwned;
+    }
+
 }
 
 

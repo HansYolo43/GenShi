@@ -3,6 +3,7 @@ package data_access;
 import Database.DatabaseHelper;
 import Entities.Card;
 import Entities.Stats;
+import Entities.User;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -25,7 +26,7 @@ public class FileCardDataAccessObject {
 
     private String dbPath;
 
-    private DatabaseHelper databaseHelper;
+    private final DatabaseHelper databaseHelper;
 
     public FileCardDataAccessObject(String csvPath, String dbPath) throws IOException {
 
@@ -188,5 +189,14 @@ public class FileCardDataAccessObject {
 
     public void exit(){
         saveallCards();
+    }
+
+    public void addUser(User user) {
+        databaseHelper.saveUser(user);
+    }
+
+    // Retrieve a user by their ID
+    public User getUser(String Username) {
+        return databaseHelper.loadUser(Username);
     }
 }
