@@ -6,7 +6,7 @@ import data_access.FileCardDataAccessObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Sample_Dao_Use {
+public class Main {
     public static void main(String[] args) throws IOException {
 
         String Apikey = "api-key";
