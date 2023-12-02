@@ -10,9 +10,9 @@ import java.util.HashMap;
 public class Gallery {
     private User user; //replace with common user
 
-    private FileCardDataAccessObject fileCardDataAccessObject;
+    private GalleryUserDataAccessInterface fileCardDataAccessObject;
 
-    public Gallery(FileCardDataAccessObject Dao, User user){
+    public Gallery(GalleryUserDataAccessInterface Dao, User user){
         this.fileCardDataAccessObject = Dao;
         this.user = user;
 

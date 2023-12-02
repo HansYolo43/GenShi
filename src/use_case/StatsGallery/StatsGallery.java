@@ -3,7 +3,7 @@ package use_case.StatsGallery;
 import data_access.FileCardDataAccessObject;
 
 public class StatsGallery {
-    private final FileCardDataAccessObject fileCardDataAccessObject;
+    private final StatsGalleryDataAccessInterface fileCardDataAccessObject;
 
     public StatsGallery(FileCardDataAccessObject fileCardDataAccessObject){
         this.fileCardDataAccessObject = fileCardDataAccessObject;

@@ -7,6 +7,7 @@ import use_case.StatsGallery.StatsGallery;
 import use_case.gallery.Gallery;
 import use_case.generatecard.GenerateCardDataAccessInterFace;
 import use_case.generatecard.GenerateImageDataAccessInterface;
+import use_case.lootbox.Lootbox;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,13 +19,21 @@ public class Sample_Dao_Use {
 
         FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
 
+
         User user = cardDAO.getUser("TestUser");
+        cardDAO.setActiveUser(user);
 
         Gallery gallery = new Gallery(cardDAO, user);
 
         HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
 
         StatsGallery statsGallery = new StatsGallery(cardDAO);
+
+        Lootbox lootbox = new Lootbox(cardDAO);
+
+        Card cards = lootbox.execute();
+
+
 
 
 
@@ -33,10 +42,12 @@ public class Sample_Dao_Use {
             // Retrieve and print the card name and ID
             System.out.println("Card Name: " + card.getName() + ", Card ID: " + card.getId() + ", User Ownes it" + entry.getValue());
 
-            System.out.println(statsGallery.execute(card.getId()).getName());
+            System.out.println(statsGallery.execute(card.getId()));
         }
 
+        System.out.println(cards.getName() + "gambled");
 
+        cardDAO.exit();
 
     }
 }

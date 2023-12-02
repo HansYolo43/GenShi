@@ -307,22 +307,28 @@ public class DatabaseHelper {
 
         // Insert new records
         String sqlInsert = "INSERT INTO UserCards (UserID, CardID) VALUES (?, ?)";
+        String sqlCheck = "SELECT COUNT(*) FROM UserCards WHERE UserID = ? AND CardID = ?";
 
         try (Connection conn = connect();
-             PreparedStatement pstmtInsert = conn.prepareStatement(sqlInsert)) {
+             PreparedStatement pstmtInsert = conn.prepareStatement(sqlInsert);
+             PreparedStatement pstmtCheck = conn.prepareStatement(sqlCheck)) {
 
-
-            // Insert new cards
             for (Integer cardId : cardsOwned) {
-                pstmtInsert.setInt(1, userId);
-                pstmtInsert.setInt(2, cardId);
-                pstmtInsert.executeUpdate();
+                // Check if the card already exists for the user
+                pstmtCheck.setInt(1, userId);
+                pstmtCheck.setInt(2, cardId);
+                ResultSet rs = pstmtCheck.executeQuery();
+                if (rs.next() && rs.getInt(1) == 0) {
+                    // If the card is not already owned by the user, insert it
+                    pstmtInsert.setInt(1, userId);
+                    pstmtInsert.setInt(2, cardId);
+                    pstmtInsert.executeUpdate();
+                }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
     public static ArrayList<Integer> loadUserCards(int userId) {
         ArrayList<Integer> cardsOwned = new ArrayList<>();
         String sql = "SELECT CardID FROM UserCards WHERE UserID = ?";

@@ -4,6 +4,9 @@ import Database.DatabaseHelper;
 import Entities.Card;
 import Entities.Stats;
 import Entities.User;
+import use_case.StatsGallery.StatsGalleryDataAccessInterface;
+import use_case.gallery.GalleryUserDataAccessInterface;
+import use_case.lootbox.LootboxUserDataAccessInterface;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -14,7 +17,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
-public class FileCardDataAccessObject {
+public class FileCardDataAccessObject implements LootboxUserDataAccessInterface, GalleryUserDataAccessInterface, StatsGalleryDataAccessInterface {
 
     private final ArrayList<Integer> CardArray = new ArrayList<>();
 
@@ -27,6 +30,8 @@ public class FileCardDataAccessObject {
     private String dbPath;
 
     private final DatabaseHelper databaseHelper;
+
+    private User Commonuser;
 
     public FileCardDataAccessObject(String csvPath, String dbPath) throws IOException {
 
@@ -129,7 +134,7 @@ public class FileCardDataAccessObject {
     }
 
 
-
+    @Override
     public Card getCard(int cardId) {
         return Cards.get(cardId);
     }
@@ -183,6 +188,11 @@ public class FileCardDataAccessObject {
 
     }
 
+    public void setActiveUser(User user){
+        this.Commonuser = user;
+    }
+
+    @Override
     public ArrayList<Integer> CardManager(){
         return CardArray;
     }
@@ -199,4 +209,19 @@ public class FileCardDataAccessObject {
     public User getUser(String Username) {
         return databaseHelper.loadUser(Username);
     }
+
+
+    @Override
+    public Integer randomcard(){
+        Random rand = new Random();
+        return CardArray.get(rand.nextInt(CardArray.size()));
+    }
+
+
+    @Override
+    public void updateusercard(Integer cardID){
+        Commonuser.addownedcard(cardID);
+        databaseHelper.saveUser(Commonuser);
+    }
 }
+

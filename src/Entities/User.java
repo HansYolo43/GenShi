@@ -76,6 +76,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void addownedcard(Integer cardid){cards_owned.add(cardid);}
 }
 //    public HashMap<Integer, Card> getCard_level() {
 //        return Card_level;
