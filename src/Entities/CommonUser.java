@@ -3,46 +3,68 @@ package Entities;
 
 import java.util.ArrayList;
 
-class CommonUser implements User {
+class CommonUser extends User{
+    Integer userid;
+    ArrayList<Integer> cardsOwned;
+    Integer userlevel;
+    Integer currency;
+    String username;
+    String password;
 
-    private final String name;
-    private final String password;
-    private ArrayList<Card> cards = new ArrayList<Card>();
-    // the user puts in a name and password. They ideally don't start with any cards
-
-//    /**
-//     * Requires: password is valid.
-//     * @param name
-//     * @param password
-//     */
-
-    CommonUser(String name, String password) {
-        this.name = name;
-        this.password = password;
+    CommonUser(Integer userid, ArrayList<Integer> cardsOwned, Integer userlevel, Integer currency, String username, String password) {
+        super(userid,cardsOwned,userlevel,currency,username,password);
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return super.getUsername();
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return super.getPassword();
     }
 
     // we want to be able to add cards when we get a card, and possibly get cards so we can view em
-    public void add_card(Card card) {
-        cards.add(card);
+
+    public void setUsername(String username) {
+        this.username=username;
     }
 
-    public ArrayList<Card> get_cards(){
-        return cards;
+    public ArrayList<Integer> getCards_owned() {
+        return super.getCards_owned();
     }
 
-    // for testing purposes for how a sample user would behave with a predetermined set of cards
-    public void set_cards(ArrayList<Card> pre_cards){
-        this.cards = pre_cards;
+    public void setCards_owned(ArrayList<Integer> cards_owned) {
+        this.cardsOwned = cards_owned;
+    }
+
+    public Integer getUserid() {
+        return super.getUserid();
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public Integer getUserlevel() {
+        return super.getUserlevel();
+    }
+
+    public void setUserlevel(Integer userlevel) {
+        this.userlevel = userlevel;
+    }
+
+    public Integer getCurrency() {
+        return super.getCurrency();
+    }
+
+    public void setCurrency(Integer currency) {
+        this.currency = currency;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

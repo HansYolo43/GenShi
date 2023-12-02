@@ -4,6 +4,7 @@ import data_access.FileUserDataAccessObject;
 import Entities.CommonUserFactory;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.logged_in.LoggedInViewModel;
+import interface_adapter.logout.LogoutController;
 import interface_adapter.signup.SignupViewModel;
 import interface_adapter.ViewManagerModel;
 import use_case.login.LoginUserDataAcesssInterface;
@@ -59,7 +60,12 @@ public class Main {
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
         views.add(loginView, loginView.viewName);
 
-        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
+
+
+//        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
+
+        // this hopefully has logout embedded
+        LoggedInView loggedInView = LogoutUseCaseFactory.create(viewManagerModel,loginViewModel,loggedInViewModel);
         views.add(loggedInView, loggedInView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);

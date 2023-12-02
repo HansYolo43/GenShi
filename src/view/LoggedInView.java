@@ -4,6 +4,7 @@ package view;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.login.LoginState;
+import interface_adapter.logout.LogoutController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
 
     public final String viewName = "logged in";
     private final LoggedInViewModel loggedInViewModel;
+    private final LogoutController logoutController;
 
     JLabel username;
 
@@ -24,9 +26,10 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     /**
      * A window with a title and a JButton.
      */
-    public LoggedInView(LoggedInViewModel loggedInViewModel) {
+    public LoggedInView(LoggedInViewModel loggedInViewModel, LogoutController logoutController) {
         this.loggedInViewModel = loggedInViewModel;
         this.loggedInViewModel.addPropertyChangeListener(this);
+        this.logoutController = logoutController;
 
         JLabel title = new JLabel("Logged In Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -38,7 +41,12 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
         logOut = new JButton(loggedInViewModel.LOGOUT_BUTTON_LABEL);
         buttons.add(logOut);
 
-        logOut.addActionListener(this);
+        logOut.addActionListener(
+                new ActionListener(){
+                public void actionPerformed(ActionEvent evt) {  // don't understand SHIT
+                    if (evt.getSource() == logOut) {
+                        logoutController.execute();
+                }}});
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -47,6 +55,8 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
         this.add(username);
         this.add(buttons);
     }
+
+
 
     /**
      * React to a button click that results in evt.

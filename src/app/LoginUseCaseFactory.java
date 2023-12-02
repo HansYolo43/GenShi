@@ -28,7 +28,8 @@ public class LoginUseCaseFactory {
             LoginUserDataAcesssInterface userDataAccessObject) {
 
         try {
-            LoginController loginController = createLoginUseCase(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
+            LoginController loginController = createLoginUseCase(viewManagerModel, loginViewModel,
+                    loggedInViewModel, userDataAccessObject);
             return new LoginView(loginViewModel, loginController);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not open user data file.");
@@ -54,23 +55,6 @@ public class LoginUseCaseFactory {
         return new LoginController(loginInteractor);
     }
 
-    private static LogoutController createLogoutUseCase(
-            ClearViewModel clearViewModel, ClearUserDataAccessInterface clearUserDataAccessObject)
-            throws IOException {
-
-        // Notice how we pass this method's parameters to the Presenter.
-        ClearOutputBoundary clearOutputBoundary = new ClearPresenter(clearViewModel);
-
-        //new SignupPresenter(viewManagerModel, signupViewModel, loginViewModel);
-
-        UserFactory userFactory = new CommonUserFactory(); // manufacturing users
-
-        ClearInputBoundary clearUserInteractor = new ClearInteractor(
-                clearUserDataAccessObject, clearOutputBoundary, userFactory);
-
-        return new ClearController(clearUserInteractor);
-    }
 }
 
-// add one for log out
 

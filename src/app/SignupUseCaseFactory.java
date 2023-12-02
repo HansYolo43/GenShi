@@ -54,6 +54,5 @@ public class SignupUseCaseFactory { // creates use cases and sends them to use c
         return new SignupController(userSignupInteractor);
     }
 
-
 }
 

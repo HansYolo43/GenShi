@@ -1,6 +1,6 @@
 package data_access;
 
-import Entities.User;
+import Entities.User_;
 import Entities.UserFactory;
 import use_case.login.LoginUserDataAcesssInterface;
 import use_case.signup.SignupUserDataAcesssInterface;
@@ -15,7 +15,7 @@ public class FileUserDataAccessObject implements SignupUserDataAcesssInterface,L
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
 
-    private final Map<String, User> accounts = new HashMap<>();
+    private final Map<String, User_> accounts = new HashMap<>();
 
     private UserFactory userFactory;
 
@@ -41,7 +41,7 @@ public class FileUserDataAccessObject implements SignupUserDataAcesssInterface,L
                     String[] col = row.split(",");
                     String username = String.valueOf(col[headers.get("username")]);
                     String password = String.valueOf(col[headers.get("password")]);
-                    User user = userFactory.create(username, password);
+                    User_ user = userFactory.create(username, password);
                     accounts.put(username, user);
                 }
             }
@@ -49,13 +49,13 @@ public class FileUserDataAccessObject implements SignupUserDataAcesssInterface,L
     }
 
     @Override
-    public void save(User user) {
+    public void save(User_ user) {
         accounts.put(user.getName(), user);
         this.save();
     }
 
     @Override
-    public User get(String username) {
+    public User_ get(String username) {
         return accounts.get(username);
     }
 
@@ -66,7 +66,7 @@ public class FileUserDataAccessObject implements SignupUserDataAcesssInterface,L
             writer.write(String.join(",", headers.keySet()));
             writer.newLine();
 
-            for (User user : accounts.values()) {
+            for (User_ user : accounts.values()) {
                 String line = String.format("%s,%s",
                         user.getName(), user.getPassword());
                 writer.write(line);

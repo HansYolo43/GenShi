@@ -1,5 +1,6 @@
 package use_case.logout;
 
+// TODO: DELETE THIS
 public class LogoutOutputData {
     private final String username;
     private boolean useCaseFailed;

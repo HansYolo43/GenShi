@@ -3,5 +3,5 @@ package use_case.logout;
 import use_case.login.LoginInputData;
 
 public interface LogoutInputBoundary {
-    void execute(LogoutData logoutData);
+    void execute();
 }
