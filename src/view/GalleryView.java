@@ -1,18 +1,14 @@
 package view;
 
-import interface_adapter.main_menu.GalleryState;
-import interface_adapter.main_menu.GalleryViewModel;
+import interface_adapter.gallery.GalleryState;
+import interface_adapter.gallery.GalleryViewModel;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.File;
-import java.io.IOException;
 
 public class GalleryView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "gallery";

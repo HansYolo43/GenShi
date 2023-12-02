@@ -1,19 +1,18 @@
-package interface_adapter.main_menu;
+package interface_adapter.gambling;
 
 import interface_adapter.ViewModel;
+import interface_adapter.gallery.GalleryState;
 
 import java.beans.PropertyChangeSupport;
 
-public class GalleryViewModel extends ViewModel {
-    public static final String BACK_BUTTON_LABEL = "Back";
-    public static final String CARD_VIEW_BUTTON_LABEL = "View card";
-
-    private GalleryState state = new GalleryState();
-    public GalleryViewModel() {
-        super("gallery");
+public class GamblingViewModel extends ViewModel {
+    public static final String GAMBLING_BUTTON_LABEL = "Gamble";
+    private GamblingState state = new GamblingState();
+    public GamblingViewModel() {
+        super("gambling");
     }
 
-    public void setState(GalleryState state) {
+    public void setState(GamblingState state) {
         this.state = state;
     }
 
@@ -29,7 +28,7 @@ public class GalleryViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
 
-    public GalleryState getState() {
+    public GamblingState getState() {
         return state;
     }
 }

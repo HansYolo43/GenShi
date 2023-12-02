@@ -1,15 +1,16 @@
 package app;
 
 import interface_adapter.ViewManagerModel;
-import interface_adapter.main_menu.GalleryViewModel;
+import interface_adapter.gallery.GalleryViewModel;
+import interface_adapter.gambling.GamblingViewModel;
 import interface_adapter.main_menu.MainMenuViewModel;
 import view.GalleryView;
+import view.GamblingView;
 import view.MainMenuView;
 import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,15 +37,18 @@ public class Main {
         // be observed by the Views.
         MainMenuViewModel mainMenuViewModel = new MainMenuViewModel();
         GalleryViewModel galleryViewModel = new GalleryViewModel();
+        GamblingViewModel gamblingViewModel = new GamblingViewModel();
 
-        MainMenuView mainMenuView = MainMenuUseCaseFactory.create(viewManagerModel, mainMenuViewModel, galleryViewModel);
+        MainMenuView mainMenuView = MainMenuUseCaseFactory.create(viewManagerModel, mainMenuViewModel, galleryViewModel, gamblingViewModel);
         views.add(mainMenuView, mainMenuView.viewName);
         GalleryView galleryView = new GalleryView(galleryViewModel);
         views.add(galleryView, galleryView.viewName);
+        GamblingView gamblingView = new GamblingView(gamblingViewModel);
+        views.add(gamblingView, gamblingView.viewName);
 
 
 
-        viewManagerModel.setActiveView(galleryView.viewName);
+        viewManagerModel.setActiveView(mainMenuView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
