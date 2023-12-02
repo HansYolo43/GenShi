@@ -2,6 +2,7 @@ package app;
 
 import interface_adapter.ViewManagerModel;
 import interface_adapter.gallery.GalleryViewModel;
+import interface_adapter.gambling.GamblingViewModel;
 import interface_adapter.main_menu.MainMenuController;
 import interface_adapter.main_menu.MainMenuViewModel;
 import interface_adapter.main_menu.SwitchToGalleryPresenter;
@@ -9,11 +10,12 @@ import use_case.main_menu.SwitchToGalleryInputBoundary;
 import use_case.main_menu.SwitchToGalleryInteractor;
 import use_case.main_menu.SwitchToGalleryOutputBoundary;
 import view.GalleryView;
+import view.GamblingView;
 
-public class GalleryUseCaseFactory {
-    public static GalleryView create(ViewManagerModel viewManagerModel, GalleryViewModel galleryViewModel) {
+public class GamblingUseCaseFactory {
+    public static GamblingView create(ViewManagerModel viewManagerModel, GamblingViewModel gamblingViewModel) {
         //GalleryController galleryUseCase = createGalleryUseCase(viewManagerModel, mainMenuViewModel, galleryViewModel);
-        return new GalleryView(galleryViewModel);
+        return new GamblingView(gamblingViewModel);
     }
 
     // TODO: not finished, controller not created.

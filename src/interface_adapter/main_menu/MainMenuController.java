@@ -2,14 +2,16 @@ package interface_adapter.main_menu;
 
 import use_case.main_menu.MainMenuInputBoundary;
 import use_case.main_menu.SwitchToGalleryInputBoundary;
+import use_case.main_menu.SwitchToGamblingInputBoundary;
+import use_case.main_menu.SwitchToGamblingOutputBoundary;
 
 public class MainMenuController {
     final SwitchToGalleryInputBoundary switchToGalleryInteractor;
-    final MainMenuInputBoundary switchToGamblingInteractor;
+    final SwitchToGamblingInputBoundary switchToGamblingInteractor;
     final MainMenuInputBoundary switchToGameInteractor;
     final MainMenuInputBoundary logoutInteractor;
 
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, MainMenuInputBoundary switchToGamblingInteractor, MainMenuInputBoundary switchToGameInteractor, MainMenuInputBoundary logoutInteractor) {
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor, MainMenuInputBoundary switchToGameInteractor, MainMenuInputBoundary logoutInteractor) {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
         this.switchToGamblingInteractor = switchToGamblingInteractor;
@@ -17,6 +19,16 @@ public class MainMenuController {
         this.logoutInteractor = logoutInteractor;
     }
 
+    // for debugging
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor) {
+
+        this.switchToGalleryInteractor = switchToGalleryInteractor;
+        this.switchToGamblingInteractor = switchToGamblingInteractor;
+        this.switchToGameInteractor = null;
+        this.logoutInteractor = null;
+    }
+
+    // for debugging
     public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor) {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
@@ -30,7 +42,7 @@ public class MainMenuController {
     }
 
     public void executeGambling() {
-        // TODO: Implement
+        switchToGamblingInteractor.execute();
     }
 
     public void executeGame() {

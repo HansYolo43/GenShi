@@ -1,4 +1,4 @@
-package interface_adapter.main_menu;
+package interface_adapter.gallery;
 
 public class GalleryState {
     // we have to keep track of two possible errors: cardView and back
