@@ -1,35 +1,53 @@
 package app;
 
 import Entities.Card;
+import Entities.User;
 import data_access.FileCardDataAccessObject;
+import use_case.StatsGallery.StatsGallery;
+import use_case.gallery.Gallery;
 import use_case.generatecard.GenerateCardDataAccessInterFace;
 import use_case.generatecard.GenerateImageDataAccessInterface;
+import use_case.lootbox.Lootbox;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sample_Dao_Use {
     public static void main(String[] args) throws IOException {
 
-        String Apikey = "$OPENAI_API_KEY";
-        String theme = " loaf of bread wearing white glove";
-        FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt");
+
+        FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
 
 
-        GenerateCardDataAccessInterFace cardex = new GenerateCardDataAccessInterFace(Apikey , theme , cardDAO);
+        User user = cardDAO.getUser("TestUser");
+        cardDAO.setActiveUser(user);
+
+        Gallery gallery = new Gallery(cardDAO, user);
+
+        HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
+
+        StatsGallery statsGallery = new StatsGallery(cardDAO);
+
+        Lootbox lootbox = new Lootbox(cardDAO);
+
+        Card cards = lootbox.execute();
 
 
-        Integer cardID = cardex.generateAndSaveCharacters();
-
-        Card card = cardDAO.getCard(cardID);
-
-        System.out.println(card);
-
-        GenerateImageDataAccessInterface cardop = new GenerateImageDataAccessInterface(Apikey,cardDAO);
-
-        cardop.generateImageForCard(card.getId() , "Create a simple character card of a loaf of bread wearing white glove");
 
 
 
+        for (Map.Entry<Card, Boolean> entry : booleanHashMap.entrySet()) {
+            Card card = entry.getKey();
+            // Retrieve and print the card name and ID
+            System.out.println("Card Name: " + card.getName() + ", Card ID: " + card.getId() + ", User Ownes it" + entry.getValue());
+
+            System.out.println(statsGallery.execute(card.getId()));
+        }
+
+        System.out.println(cards.getName() + "gambled");
+
+        cardDAO.exit();
 
     }
 }

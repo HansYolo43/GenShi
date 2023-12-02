@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main {
+
     public static void main(String[] args) {
         System.out.println("Hello, world!");
         JFrame application = new JFrame("Main Menu Test");
@@ -46,12 +47,12 @@ public class Main {
         GamblingView gamblingView = new GamblingView(gamblingViewModel);
         views.add(gamblingView, gamblingView.viewName);
 
-
-
         viewManagerModel.setActiveView(mainMenuView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
         application.setVisible(true);
+
     }
 }
+
