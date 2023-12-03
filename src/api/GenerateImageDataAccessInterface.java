@@ -1,4 +1,4 @@
-package use_case.generatecard;
+package api;
 
 import Entities.Card;
 import data_access.FileCardDataAccessObject;

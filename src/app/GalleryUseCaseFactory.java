@@ -10,8 +10,10 @@ import use_case.main_menu.SwitchToGalleryInteractor;
 import use_case.main_menu.SwitchToGalleryOutputBoundary;
 import view.GalleryView;
 
+import java.io.IOException;
+
 public class GalleryUseCaseFactory {
-    public static GalleryView create(ViewManagerModel viewManagerModel, GalleryViewModel galleryViewModel) {
+    public static GalleryView create(ViewManagerModel viewManagerModel, GalleryViewModel galleryViewModel) throws IOException {
         //GalleryController galleryUseCase = createGalleryUseCase(viewManagerModel, mainMenuViewModel, galleryViewModel);
         return new GalleryView(galleryViewModel);
     }

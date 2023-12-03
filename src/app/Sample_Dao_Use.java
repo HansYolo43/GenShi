@@ -5,8 +5,6 @@ import Entities.User;
 import data_access.FileCardDataAccessObject;
 import use_case.StatsGallery.StatsGallery;
 import use_case.gallery.Gallery;
-import use_case.generatecard.GenerateCardDataAccessInterFace;
-import use_case.generatecard.GenerateImageDataAccessInterface;
 import use_case.lootbox.Lootbox;
 
 import java.io.IOException;
