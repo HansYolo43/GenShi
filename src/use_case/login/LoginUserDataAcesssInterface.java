@@ -1,11 +1,12 @@
 package use_case.login;
 
-import Entities.User_;
+import Entities.User;
+
 
 public interface LoginUserDataAcesssInterface{
-    boolean existsByName(String identifier);
 
-    void save(User_ user);
+    void addUser(User user); //save
 
-    User_ get(String username);
+    User getUser(String username); // if it returns null, user does not exist in the systenm
+    // else we return user and their information
 }

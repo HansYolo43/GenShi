@@ -1,13 +1,10 @@
 package app;
 
-import data_access.FileUserDataAccessObject;
-import Entities.CommonUserFactory;
+import data_access.FileCardDataAccessObject;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.logged_in.LoggedInViewModel;
-import interface_adapter.logout.LogoutController;
 import interface_adapter.signup.SignupViewModel;
 import interface_adapter.ViewManagerModel;
-import use_case.login.LoginUserDataAcesssInterface;
 import view.LoggedInView;
 import view.LoginView;
 import view.SignupView;
@@ -45,9 +42,9 @@ public class Main {
         SignupViewModel signupViewModel = new SignupViewModel();
 
 
-        FileUserDataAccessObject userDataAccessObject;
-        try {
-            userDataAccessObject = new FileUserDataAccessObject("./users.csv", new CommonUserFactory());
+        FileCardDataAccessObject userDataAccessObject;
+        try { //TODO: possible bug?
+            userDataAccessObject = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

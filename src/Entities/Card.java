@@ -21,7 +21,7 @@ public class Card {
         return name;
     }
 
-    public String imgpath(){return imgpath;}
+    public String getimgpath(){return imgpath;}
     public int getImageID() {
         return imageID;
     }
