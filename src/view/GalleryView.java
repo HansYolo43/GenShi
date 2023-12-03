@@ -3,6 +3,7 @@ package view;
 import Entities.Card;
 import Entities.User;
 import data_access.FileCardDataAccessObject;
+import interface_adapter.ViewManagerModel;
 import interface_adapter.gallery.GalleryState;
 import interface_adapter.gallery.GalleryViewModel;
 import use_case.gallery.Gallery;
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,8 +53,17 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
         for (Map.Entry<Card, Boolean> entry : booleanHashMap.entrySet()) {
             Card card = entry.getKey();
             JButton cardViewButton = new JButton();
-            Image image = new ImageIcon(card.getimgpath()).getImage();
-            image = image.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+            String imgPath = card.getimgpath();
+            if (!canLoadImage(imgPath)) {
+                imgPath = imgPath.replace("\\", "/");
+                // Set a default icon or handle the error
+                if (!canLoadImage(imgPath)) {
+                    System.out.println("Image there: " + imgPath);
+                }
+            }
+
+            Image image = new ImageIcon(imgPath).getImage();
+            image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             cardViewButton.setIcon(new ImageIcon(image));
             buttons.add(cardViewButton);
 
@@ -63,6 +74,7 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                                 GalleryState currentState = viewModel.getState(); // not really needed here
                                 // use your controller(s)
                                 System.out.println("Card view button clicked");
+                                // TODO: for testing, remove later
                             }
                         }
                     }
@@ -86,6 +98,15 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
 
 
         this.add(buttons);
+    }
+
+    private boolean canLoadImage(String imagePath) {
+        try {
+            ImageIcon icon = new ImageIcon(imagePath);
+            return icon.getImageLoadStatus() == MediaTracker.COMPLETE;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
