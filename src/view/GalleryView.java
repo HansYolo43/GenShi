@@ -1,7 +1,11 @@
 package view;
 
+import Entities.Card;
+import Entities.User;
+import data_access.FileCardDataAccessObject;
 import interface_adapter.gallery.GalleryState;
 import interface_adapter.gallery.GalleryViewModel;
+import use_case.gallery.Gallery;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GalleryView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "gallery";
@@ -16,10 +23,9 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
 
     // we have to keep track of two possible errors: cardView and back
     private final JButton backButton;
-    private final JButton cardViewButton;
     // TODO: add controllers
 
-    public GalleryView(GalleryViewModel viewModel) {
+    public GalleryView(GalleryViewModel viewModel) throws IOException {
         this.viewModel = viewModel;
         JLabel title = new JLabel("gallery");
         title.setAlignmentX(CENTER_ALIGNMENT);
@@ -28,14 +34,44 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
         JPanel buttons = new JPanel();
         // TODO: expand this so that the number of cardViewButtons is equal to the number of cards in the gallery
         this.backButton = new JButton(GalleryViewModel.BACK_BUTTON_LABEL);
-        this.cardViewButton = new JButton();
-        String path = "/Users/dmitriivlasov/IdeaProjects/GenShi/src/view/img.png";
-        Image image = new ImageIcon(path).getImage();
-        image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-
-        this.cardViewButton.setIcon(new ImageIcon(image));
         buttons.add(backButton);
-        buttons.add(cardViewButton);
+//        this.cardViewButton = new JButton();
+//        String path = "/Users/dmitriivlasov/IdeaProjects/GenShi/src/view/img.png";
+//        Image image = new ImageIcon(path).getImage();
+//        image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+//
+//        this.cardViewButton.setIcon(new ImageIcon(image));
+//        buttons.add(cardViewButton);
+        FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
+        User user = cardDAO.getUser("TestUser");
+        cardDAO.setActiveUser(user);
+
+        Gallery gallery = new Gallery(cardDAO);
+        HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
+        for (Map.Entry<Card, Boolean> entry : booleanHashMap.entrySet()) {
+            Card card = entry.getKey();
+            JButton cardViewButton = new JButton();
+            Image image = new ImageIcon(card.getimgpath()).getImage();
+            image = image.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+            cardViewButton.setIcon(new ImageIcon(image));
+            buttons.add(cardViewButton);
+
+            cardViewButton.addActionListener(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent evt) {
+                            if (evt.getSource().equals(cardViewButton)) {
+                                GalleryState currentState = viewModel.getState(); // not really needed here
+                                // use your controller(s)
+                                System.out.println("Card view button clicked");
+                            }
+                        }
+                    }
+            );
+            // Retrieve and print the card name and ID
+
+            //System.out.println("Card Name: " + card.getName() + ", Card ID: " + card.getId() + ", User Ownes it" + entry.getValue());
+        }
+
 
         this.backButton.addActionListener(
                 new ActionListener() {
@@ -48,17 +84,7 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                 }
         );
 
-        this.cardViewButton.addActionListener(
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(cardViewButton)) {
-                            GalleryState currentState = viewModel.getState(); // not really needed here
-                            // use your controller(s)
-                            System.out.println("Card view button clicked");
-                        }
-                    }
-                }
-        );
+
         this.add(buttons);
     }
 
