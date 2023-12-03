@@ -1,6 +1,8 @@
 package use_case.logout;
 
-public class LogoutInteractor implements LogoutInputBoundary{
+import use_case.main_menu.MainMenuInputBoundary;
+
+public class LogoutInteractor implements MainMenuInputBoundary {
     final LogoutOutputBoundary logoutPresenter;
 
     public LogoutInteractor(LogoutOutputBoundary logoutOutputBoundary
@@ -10,5 +12,6 @@ public class LogoutInteractor implements LogoutInputBoundary{
     @Override
     public void execute() {
         logoutPresenter.prepareSuccessView();
-    }
+    } // todo: write something where
+    // i can fail to log out
 }

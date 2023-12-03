@@ -7,6 +7,7 @@ import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginPresenter;
 import interface_adapter.login.LoginViewModel;
+import interface_adapter.main_menu.MainMenuViewModel;
 import use_case.login.LoginInputBoundary;
 import use_case.login.LoginOutputBoundary;
 import use_case.login.LoginInteractor;
@@ -24,7 +25,7 @@ public class LoginUseCaseFactory {
     public static LoginView create(
             ViewManagerModel viewManagerModel,
             LoginViewModel loginViewModel,
-            LoggedInViewModel loggedInViewModel,
+            MainMenuViewModel loggedInViewModel,
             LoginUserDataAcesssInterface userDataAccessObject) {
 
         try {
@@ -41,7 +42,7 @@ public class LoginUseCaseFactory {
     private static LoginController createLoginUseCase(
             ViewManagerModel viewManagerModel,
             LoginViewModel loginViewModel,
-            LoggedInViewModel loggedInViewModel,
+            MainMenuViewModel loggedInViewModel,
             LoginUserDataAcesssInterface userDataAccessObject) throws IOException {
 
         // Notice how we pass this method's parameters to the Presenter.
