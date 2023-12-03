@@ -223,5 +223,10 @@ public class FileCardDataAccessObject implements LootboxUserDataAccessInterface,
         Commonuser.addownedcard(cardID);
         databaseHelper.saveUser(Commonuser);
     }
+
+    @Override
+    public User getActiveUser(){
+        return Commonuser;
+    }
 }
 

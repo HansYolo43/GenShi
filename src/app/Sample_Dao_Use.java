@@ -23,7 +23,7 @@ public class Sample_Dao_Use {
         User user = cardDAO.getUser("TestUser");
         cardDAO.setActiveUser(user);
 
-        Gallery gallery = new Gallery(cardDAO, user);
+        Gallery gallery = new Gallery(cardDAO);
 
         HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
 

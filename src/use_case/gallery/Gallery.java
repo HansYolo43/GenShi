@@ -12,9 +12,9 @@ public class Gallery {
 
     private GalleryUserDataAccessInterface fileCardDataAccessObject;
 
-    public Gallery(GalleryUserDataAccessInterface Dao, User user){
+    public Gallery(GalleryUserDataAccessInterface Dao){
         this.fileCardDataAccessObject = Dao;
-        this.user = user;
+        this.user = fileCardDataAccessObject.getActiveUser() ;
 
     }
 
