@@ -2,7 +2,6 @@ package Entities;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -32,6 +31,14 @@ public class CommonUserTest {
 
     @Test
     public void setUsername() {
+        ArrayList<Integer> cards = new ArrayList<>();
+        cards.add(1122496);
+        cards.add(1297133);
+        cards.add(1342773);
+
+        CommonUser user_ = new CommonUser(1234,cards,1,5,"hannah","password");
+        user_.setUsername("ben");
+        assertEquals("ben",user_.getUsername());
     }
 
     @Test
@@ -50,7 +57,17 @@ public class CommonUserTest {
 
     @Test
     public void setCards_owned() {
-        assertNotNull(user.cardsOwned);
+        ArrayList<Integer> cards = new ArrayList<>();
+        cards.add(1122496);
+        cards.add(1297133);
+        cards.add(1342773);
+
+        ArrayList<Integer> card = new ArrayList<>();
+        card.add(1);
+
+        CommonUser user_ = new CommonUser(1234,cards,1,5,"hannah","password");
+        user_.setCards_owned(card);
+        assertEquals(card,user_.getCards_owned());
     }
 
     @Test
@@ -60,7 +77,14 @@ public class CommonUserTest {
 
     @Test
     public void setUserid() {
-        assertNotNull(user.userid);
+        ArrayList<Integer> cards = new ArrayList<>();
+        cards.add(1122496);
+        cards.add(1297133);
+        cards.add(1342773);
+
+        CommonUser user_ = new CommonUser(1234,cards,1,5,"hannah","password");
+        user_.setUserid(90);
+        assertEquals(90,user_.getUserid().intValue());
     }
 
     @Test
@@ -70,7 +94,14 @@ public class CommonUserTest {
 
     @Test
     public void setUserlevel() {
-        assertNotNull(user.userlevel);
+        ArrayList<Integer> cards = new ArrayList<>();
+        cards.add(1122496);
+        cards.add(1297133);
+        cards.add(1342773);
+
+        CommonUser user_ = new CommonUser(1234,cards,1,5,"hannah","password");
+        user_.setUserlevel(1000);
+        assertEquals(1000,user_.getUserlevel().intValue());
     }
 
     @Test
@@ -80,11 +111,26 @@ public class CommonUserTest {
 
     @Test
     public void setCurrency() {
-        assertNotNull(user.currency);
+        ArrayList<Integer> cards = new ArrayList<>();
+        cards.add(1122496);
+        cards.add(1297133);
+        cards.add(1342773);
+
+        CommonUser user_ = new CommonUser(1234,cards,1,5,"hannah","password");
+        user_.setCurrency(7);
+        assertEquals(7,user_.getCurrency().intValue());
     }
 
     @Test
     public void setPassword() {
-        assertNotNull(user.password);
+        ArrayList<Integer> cards = new ArrayList<>();
+        cards.add(1122496);
+        cards.add(1297133);
+        cards.add(1342773);
+
+        CommonUser user_ = new CommonUser(1234,cards,1,5,"hannah","password");
+
+        user_.setPassword("fin");
+        assertEquals("fin",user_.getPassword());
     }
 }

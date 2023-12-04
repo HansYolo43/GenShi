@@ -77,8 +77,8 @@ public class Main {
         views.add(galleryView, galleryView.viewName);
         GamblingView gamblingView = new GamblingView(gamblingViewModel);
         views.add(gamblingView, gamblingView.viewName);
-        CardStatsView cardStatsView = new CardStatsView(cardStatsViewModel);
-        views.add(cardStatsView, cardStatsView.viewName);
+        //CardStatsView cardStatsView = new CardStatsView(cardStatsViewModel);
+        //views.add(cardStatsView, cardStatsView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();

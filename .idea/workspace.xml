@@ -5,46 +5,142 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dd511b5-5ff5-4458-ac8a-1fa52ad354d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/Asterae.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/Odysseus Thunderborn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/Penelope the Wanderer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/Penelope the Wanderlust.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/cyberpunk_characters.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/img-A0O7lerfrLoAGDcTzYE014Pf.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/img-CiYnZ8bYVgjp1n7YCoTRBlYy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/img-SD4xfRmTuqBt80uUXmstxKtx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/img-q7wtr4SYRgDoKgKatjqR2C03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/img-qqiwTeCWwPCTVQVHeXk4BCno.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/CardTBA/odyssey_characters.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GenShi.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ge/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/DatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/CardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/CardManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Stats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Stats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Ge.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Entities/CommonUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Entities/CommonUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1122496.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1297133.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1342773.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1443755.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1614614.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1638443.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1649701.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1822094.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1863709.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1900582.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1910258.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/1920290.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2023832.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2052293.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2113507.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2258956.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2296999.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2375411.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2462901.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2477602.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2515327.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2526037.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2588458.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2620551.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2638023.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2751314.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2802065.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2923614.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2924507.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/2938187.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3007578.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3040881.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3076885.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3248149.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3325189.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3419930.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3579809.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3694700.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3851032.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3888056.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/3932413.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4011117.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4029500.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4069025.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4129224.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4138776.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4158445.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4264775.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4273839.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4309656.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4359018.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4528737.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4698640.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4805946.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4807497.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4810383.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4879836.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4905112.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/4923712.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5105696.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5175232.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5465006.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5572796.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5677611.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5861084.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5941705.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/5942396.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6004144.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6039237.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6049385.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6060408.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6084905.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6132742.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6292303.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6322971.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6329217.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6382708.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6393870.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6601546.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6726389.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6782310.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6798762.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6808543.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6817550.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/6893627.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7034418.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7038332.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7072672.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7202946.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7233014.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7283797.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7336321.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7342049.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7381349.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7679359.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7716605.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7725104.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/7939948.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8117400.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8288173.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8365055.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8659999.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8660546.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8758897.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8824926.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8860853.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/8908097.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9021741.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9025265.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9083349.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9120785.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9208624.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9243944.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9326340.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9333035.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9380959.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9433422.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9492736.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9509237.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9553285.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9563698.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9571116.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9764708.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9863104.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9896704.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/Images/9950432.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/cards.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/cards.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ge/db/test.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/MainMenuUseCaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/MainMenuUseCaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/FileCardDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/FileCardDataAccessObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/db/cards.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/cards.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/cards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/cards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/ViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/ViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/gallery/GalleryState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/gallery/GalleryState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/gallery/GalleryViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/gallery/GalleryViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/gambling/GamblingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/gambling/GamblingState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/gambling/GamblingViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/gambling/GamblingViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/main_menu/MainMenuViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/main_menu/MainMenuViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/main_menu/SwitchToGalleryPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/main_menu/SwitchToGalleryPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/main_menu/SwitchToGamblingPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/main_menu/SwitchToGamblingPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/untitled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGalleryInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGalleryInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGalleryInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGalleryInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGalleryOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGalleryOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGamblingOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/main_menu/SwitchToGamblingOutputBoundary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,26 +201,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "jdk.selected.JAVA_MODULE": "openjdk-20",
-    "last_opened_file_path": "/Users/hannahomeiza/IdeaProjects/untitled/Ge",
-    "onboarding.tips.debug.path": "/Users/hannahomeiza/IdeaProjects/untitled/Ge/src/api/GenerateImageDataAccessInterface.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;signnlog&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hannahomeiza/IdeaProjects/untitled/Ge&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/hannahomeiza/IdeaProjects/untitled/Ge/src/api/GenerateImageDataAccessInterface.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -141,6 +244,22 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="CommonUserTest.setUserid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Ge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Entities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Entities" />
+      <option name="MAIN_CLASS_NAME" value="Entities.CommonUserTest" />
+      <option name="METHOD_NAME" value="setUserid" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="GenShi" />
       <method v="2">
@@ -154,6 +273,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CommonUserTest.setUserid" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -163,8 +287,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701299624230</updated>
+      <workItem from="1701696176487" duration="4115000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="OPEN_GENERIC_TABS">
