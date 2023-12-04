@@ -9,10 +9,11 @@ public class SwitchToGalleryPresenter implements SwitchToGalleryOutputBoundary {
     private final GalleryViewModel galleryViewModel;
     private final ViewManagerModel viewManagerModel;
 
-    public SwitchToGalleryPresenter(MainMenuViewModel mainMenuViewModel, GalleryViewModel galleryViewModel, ViewManagerModel viewManagerModel) {
+
+    public SwitchToGalleryPresenter(ViewManagerModel viewManagerModel, MainMenuViewModel mainMenuViewModel, GalleryViewModel galleryViewModel) {
+        this.viewManagerModel = viewManagerModel;
         this.mainMenuViewModel = mainMenuViewModel;
         this.galleryViewModel = galleryViewModel;
-        this.viewManagerModel = viewManagerModel;
     }
     @Override
     public void prepareSuccessView() {
@@ -28,5 +29,4 @@ public class SwitchToGalleryPresenter implements SwitchToGalleryOutputBoundary {
         MainMenuState mainMenuState = mainMenuViewModel.getState();
         mainMenuState.setGalleryError(error);
         mainMenuViewModel.firePropertyChanged();
-    }
-}
+    }}

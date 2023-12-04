@@ -1,6 +1,5 @@
 package interface_adapter.main_menu;
 
-
 import interface_adapter.ViewModel;
 
 import java.beans.PropertyChangeListener;

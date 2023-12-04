@@ -2,16 +2,18 @@ package Entities;
 
 public class Stats {
     private int level;
-    private String affinity;
-    private int baseHP;
-    private int baseDEF;
-    private int baseATK;
-    private int baseCRIT;
+    private final String affinity;
+    private final int baseHP;
+    private final int baseDEF;
+    private final int baseATK;
+    private final int baseCRIT;
 
     private String rarity;
+
+
+
     //constructors below
-    public Stats(int level, String affinity, int baseHP, int baseDEF, int baseATK, int baseCRIT
-    , String rarity) {
+    public Stats(int level, String affinity, int baseHP, int baseDEF, int baseATK, int baseCRIT, String rarity) {
         this.level = level;
         this.affinity = affinity;
         this.baseHP = baseHP;
@@ -19,38 +21,6 @@ public class Stats {
         this.baseATK = baseATK;
         this.baseCRIT = baseCRIT;
         this.rarity = rarity;
-    }
-    //getters below
-    public int getLevel() {
-        return level;
-    }
-    public String getAffinity() {
-        return affinity;
-    }
-    public int getBaseHP() {
-        return baseHP;
-    }
-    public int getBaseDEF() {
-        return baseDEF;
-    }
-    public int getBaseATK() {
-        return baseATK;
-    }
-    public int getBaseCRIT() {
-        return baseCRIT;
-    }
-    //setters below
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public String serializer(){
-        return level + ":" +
-                affinity + ":" +
-                baseHP + ":" +
-                baseDEF + ":" +
-                baseATK + ":" +
-                baseCRIT + ":" ;
     }
 
     public static Stats deserialize(String line) {
@@ -68,9 +38,51 @@ public class Stats {
 
         return new Stats(level, affinity, baseHP, baseDEF, baseATK, baseCRIT, rarity);
 
+
     }
 
-    public String getRarity() {
-        return rarity;
+    //getters below
+    public int getLevel() {
+        return level;
+    }
+
+    //setters below
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public String getAffinity() {
+        return affinity;
+    }
+
+    public int getBaseHP() {
+        return baseHP;
+    }
+
+    public int getBaseDEF() {
+        return baseDEF;
+    }
+
+    public int getBaseATK() {
+        return baseATK;
+    }
+
+    public int getBaseCRIT() {
+        return baseCRIT;
+    }
+
+    public String getRarity(){return rarity;}
+
+    public void setRarity(String rariy){
+        rarity = rariy;
+    }
+
+    public String serializer() {
+        return level + ":" +
+                affinity + ":" +
+                baseHP + ":" +
+                baseDEF + ":" +
+                baseATK + ":" +
+                baseCRIT + ":";
     }
 }

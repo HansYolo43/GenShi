@@ -1,6 +1,7 @@
 package interface_adapter.gambling;
 
 import interface_adapter.ViewModel;
+import interface_adapter.gallery.GalleryState;
 
 import java.beans.PropertyChangeSupport;
 

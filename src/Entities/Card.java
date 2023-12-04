@@ -9,7 +9,7 @@ public class Card {
     private String Desc;
 
 
-    public Card(int id, String name, int imageID,String Description, String imgpath, Stats stats) {
+    public Card(int id, String name, int imageID, String Description, String imgpath, Stats stats) {
         this.name = name;
         this.imageID = imageID;
         this.stats = stats;
@@ -17,24 +17,39 @@ public class Card {
         this.Desc = Description;
         this.imgpath = imgpath;
     }
+
     public String getName() {
         return name;
     }
 
-    public String getimgpath(){return imgpath;}
+    public String getimgpath() {
+        return imgpath;
+    }
+
     public int getImageID() {
         return imageID;
     }
+
     public Stats getStats() {
         return stats;
     }
+
     public String toString() {
         return name + " " + imageID + " " + stats;
     }
 
-    public Integer getId(){return Id; }
+    public Integer getId() {
+        return Id;
+    }
 
-    public String getDesc(){ return Desc; }
+    public String getDesc() {
+        return Desc;
+    }
+
+    public void setrarity(String rarity){
+        stats.setRarity(rarity);
+
+    }
 
 
     public void setDesc(String newDescription) {
@@ -45,5 +60,6 @@ public class Card {
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
     }
+
 
 }

@@ -9,7 +9,10 @@ public class MainMenuController {
     final MainMenuInputBoundary switchToGameInteractor;
     final MainMenuInputBoundary logoutInteractor;
 
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, MainMenuInputBoundary switchToGamblingInteractor, MainMenuInputBoundary switchToGameInteractor, MainMenuInputBoundary logoutInteractor) {
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor,
+                              MainMenuInputBoundary switchToGamblingInteractor,
+                              MainMenuInputBoundary switchToGameInteractor,
+                              MainMenuInputBoundary logoutInteractor) {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
         this.switchToGamblingInteractor = switchToGamblingInteractor;
@@ -17,7 +20,10 @@ public class MainMenuController {
         this.logoutInteractor = logoutInteractor;
     }
 
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, MainMenuInputBoundary logoutInteractor) {
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor,
+                              MainMenuInputBoundary switchToGamblingInteractor,
+                              MainMenuInputBoundary logoutInteractor
+    ) {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
         this.switchToGamblingInteractor = null;

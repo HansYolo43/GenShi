@@ -3,10 +3,13 @@ package Entities;
 import java.util.ArrayList;
 
 public class CardManager {
-    private ArrayList<Card> cards;
+    private final ArrayList<Card> cards;
 
-    public CardManager() {
-        cards = new ArrayList<Card>();
+    private final ArrayList<Integer> deck;
+
+    public CardManager(ArrayList<Integer> deckids) {
+        this.deck = deckids;
+        cards = new ArrayList<>();
     }
 
     public void addCard(Card card) {

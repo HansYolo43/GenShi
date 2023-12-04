@@ -1,6 +1,5 @@
 package interface_adapter.main_menu;
 
-
 import interface_adapter.ViewManagerModel;
 import interface_adapter.gambling.GamblingViewModel;
 import use_case.main_menu.SwitchToGamblingOutputBoundary;

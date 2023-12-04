@@ -4,7 +4,10 @@ import Database.DatabaseHelper;
 import Entities.Card;
 import Entities.Stats;
 import Entities.User;
+import use_case.StatsGallery.StatsGalleryDataAccessInterface;
+import use_case.gallery.GalleryUserDataAccessInterface;
 import use_case.login.LoginUserDataAcesssInterface;
+import use_case.lootbox.LootboxUserDataAccessInterface;
 import use_case.signup.SignupUserDataAcesssInterface;
 
 import java.io.*;
@@ -16,7 +19,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
-public class FileCardDataAccessObject implements SignupUserDataAcesssInterface, LoginUserDataAcesssInterface {
+public class FileCardDataAccessObject implements LootboxUserDataAccessInterface, GalleryUserDataAccessInterface,
+        StatsGalleryDataAccessInterface, SignupUserDataAcesssInterface, LoginUserDataAcesssInterface {
 
     private final ArrayList<Integer> CardArray = new ArrayList<>();
 
@@ -29,6 +33,8 @@ public class FileCardDataAccessObject implements SignupUserDataAcesssInterface, 
     private String dbPath;
 
     private final DatabaseHelper databaseHelper;
+
+    private User Commonuser;
 
     public FileCardDataAccessObject(String csvPath, String dbPath) throws IOException {
 
@@ -102,7 +108,7 @@ public class FileCardDataAccessObject implements SignupUserDataAcesssInterface, 
         for (Card card : loadedCards) {
             addCard(card);
             CardArray.add(card.getId());
-        }
+    }
     }
 
     public void addCard(Card card) {
@@ -121,7 +127,6 @@ public class FileCardDataAccessObject implements SignupUserDataAcesssInterface, 
         return id;
     }
 
-    //TODO: LOOK HERE TO HELP WITH CREATING UNIQUE USERS
 
     public int generateUniqueId(Random rand) {
         int id;
@@ -132,7 +137,7 @@ public class FileCardDataAccessObject implements SignupUserDataAcesssInterface, 
     }
 
 
-
+    @Override
     public Card getCard(int cardId) {
         return Cards.get(cardId);
     }
@@ -186,6 +191,11 @@ public class FileCardDataAccessObject implements SignupUserDataAcesssInterface, 
 
     }
 
+    public void setActiveUser(User user){
+        this.Commonuser = user;
+    }
+
+    @Override
     public ArrayList<Integer> CardManager(){
         return CardArray;
     }
@@ -202,4 +212,24 @@ public class FileCardDataAccessObject implements SignupUserDataAcesssInterface, 
     public User getUser(String Username) {
         return databaseHelper.loadUser(Username);
     }
+
+
+    @Override
+    public Integer randomcard(){
+        Random rand = new Random();
+        return CardArray.get(rand.nextInt(CardArray.size()));
+    }
+
+
+    @Override
+    public void updateusercard(Integer cardID){
+        Commonuser.addownedcard(cardID);
+        databaseHelper.saveUser(Commonuser);
+    }
+
+    @Override
+    public User getActiveUser(){
+        return Commonuser;
+    }
 }
+
