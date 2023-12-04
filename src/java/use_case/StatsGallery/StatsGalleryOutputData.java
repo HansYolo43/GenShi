@@ -10,7 +10,5 @@ public class StatsGalleryOutputData {
 
     }
 
-    public Card getCard() {
-        return card;
-    }
+
 }

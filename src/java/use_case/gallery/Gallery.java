@@ -46,8 +46,6 @@ public class Gallery {
 
     }
 
-    public void sortbyrarity(HashMap<Card, Boolean> cardBooleanHashMap){
-        //sort by rarity if needed
-        }
+
 
 }
