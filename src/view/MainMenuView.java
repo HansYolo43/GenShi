@@ -37,14 +37,14 @@ public class MainMenuView extends JPanel implements ActionListener, PropertyChan
         // Create the buttons and add them to the button panel
         JButton galleryButton = createButton(MainMenuViewModel.GALLERY_BUTTON_LABEL, e -> mainMenuController.executeGallery());
         JButton gamblingButton = createButton(MainMenuViewModel.GAMBLING_BUTTON_LABEL, e -> mainMenuController.executeGambling());
-        JButton gameButton = createButton(MainMenuViewModel.GENERATE_CARD_BUTTON_LABEL, e -> mainMenuController.executeGenerateCard());
+        //JButton gameButton = createButton(MainMenuViewModel.GENERATE_CARD_BUTTON_LABEL, e -> mainMenuController.executeGenerateCard());
         JButton logoutButton = createButton(MainMenuViewModel.LOGOUT_BUTTON_LABEL, e -> mainMenuController.executeLogout());
 
         // Add each button to the panel with some vertical glue to push them together
         buttonPanel.add(Box.createVerticalGlue());
         addButtonToPanel(galleryButton, buttonPanel);
         addButtonToPanel(gamblingButton, buttonPanel);
-        addButtonToPanel(gameButton, buttonPanel);
+        //addButtonToPanel(gameButton, buttonPanel);
         addButtonToPanel(logoutButton, buttonPanel);
         buttonPanel.add(Box.createVerticalGlue());
 

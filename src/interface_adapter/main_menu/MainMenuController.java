@@ -11,7 +11,10 @@ public class MainMenuController {
     final SwitchToGenerateCardInputBoundary switchToGenerateCardInteractor;
     final MainMenuInputBoundary logoutInteractor;
 
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor,SwitchToGenerateCardInputBoundary SwitchToGenerateCardInteractor, MainMenuInputBoundary switchToGameInteractor, MainMenuInputBoundary logoutInteractor) {
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor,
+                              SwitchToGamblingInputBoundary switchToGamblingInteractor,
+                              SwitchToGenerateCardInputBoundary SwitchToGenerateCardInteractor,
+                              MainMenuInputBoundary logoutInteractor) {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
         this.switchToGamblingInteractor = switchToGamblingInteractor;
@@ -20,25 +23,25 @@ public class MainMenuController {
     }
 
     // for debugging
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor,
-                              SwitchToGamblingInputBoundary switchToGamblingInteractor) {
-
-        this.switchToGalleryInteractor = switchToGalleryInteractor;
-        this.switchToGamblingInteractor = switchToGamblingInteractor;
-        this.switchToGenerateCardInteractor = null;
-        this.logoutInteractor = null;
-    }
-
-    // for debugging
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor,
-                              SwitchToGamblingInputBoundary switchToGamblingInteractor,
-                              SwitchToGenerateCardInputBoundary SwitchToGenerateCardInteractor) {
-
-        this.switchToGalleryInteractor = switchToGalleryInteractor;
-        this.switchToGamblingInteractor = switchToGamblingInteractor;
-        this.switchToGenerateCardInteractor = SwitchToGenerateCardInteractor;
-        this.logoutInteractor = null;
-    }
+//    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor,
+//                              SwitchToGamblingInputBoundary switchToGamblingInteractor) {
+//
+//        this.switchToGalleryInteractor = switchToGalleryInteractor;
+//        this.switchToGamblingInteractor = switchToGamblingInteractor;
+//        this.switchToGenerateCardInteractor = null;
+//        this.logoutInteractor = null;
+//    }
+//
+//    // for debugging
+//    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor,
+//                              SwitchToGamblingInputBoundary switchToGamblingInteractor,
+//                              SwitchToGenerateCardInputBoundary SwitchToGenerateCardInteractor) {
+//
+//        this.switchToGalleryInteractor = switchToGalleryInteractor;
+//        this.switchToGamblingInteractor = switchToGamblingInteractor;
+//        this.switchToGenerateCardInteractor = SwitchToGenerateCardInteractor;
+//        this.logoutInteractor = null;
+//    }
 
     public void executeGallery() {
         switchToGalleryInteractor.execute();
