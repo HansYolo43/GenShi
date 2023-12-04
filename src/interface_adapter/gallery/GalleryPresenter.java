@@ -27,6 +27,7 @@ public class GalleryPresenter implements GalleryOutputBoundary {
         cardStatsViewModel.setState(state);
         System.out.println(cardStatsViewModel.getState().getImgpath());
         cardStatsViewModel.firePropertyChanged();
+        viewManagerModel.firePropertyChanged();
         viewManagerModel.setActiveView(cardStatsViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
