@@ -1,37 +1,51 @@
 package use_case.generatecard;
 
+import Entities.Card;
 import api.GenerateCardDataAccessInterFace;
 import api.GenerateImageDataAccessInterface;
 import data_access.FileCardDataAccessObject;
 
 import java.io.IOException;
 
-public class GenerateCardInteractor {
+public class GenerateCardInteractor implements GenerateCardInputBoundary{
 
     private FileCardDataAccessObject fileCardDataAccessObject;
 
     private final String Api_Key;
 
-    private final String theme;
+    private GenerateCardOutputBoundary presenter;
 
-    public GenerateCardInteractor(FileCardDataAccessObject fileCardDataAccessObject, String Api_key, String theme){
+    public GenerateCardInteractor(FileCardDataAccessObject fileCardDataAccessObject, String Api_key, GenerateCardOutputBoundary presenter){
         this.Api_Key = Api_key;
-        this.theme = theme;
         this.fileCardDataAccessObject = fileCardDataAccessObject;
+        this.presenter = presenter;
     }
 
-    public Integer execute() throws IOException {
+    @Override
+    public void execute(String theme) {
         GenerateCardDataAccessInterFace CardGen = new GenerateCardDataAccessInterFace(Api_Key, theme, fileCardDataAccessObject);
 
         GenerateImageDataAccessInterface CardImage =  new GenerateImageDataAccessInterface(Api_Key ,fileCardDataAccessObject);
 
-        Integer CardID = CardGen.generateAndSaveCharacters();
+        Integer CardID = null;
+        try {
+            CardID = CardGen.generateAndSaveCharacters();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        CardImage.generateImageForCard(CardID, theme);
+        try {
+            CardImage.generateImageForCard(CardID, theme);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        return CardID;
+        Card generatedCard = fileCardDataAccessObject.getCard(CardID);
 
+        presenter.presentGeneratedCard(generatedCard);
+    }
 
-
+    public void executeBack(){
+        presenter.prepareBackView();
     }
 }

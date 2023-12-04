@@ -5,8 +5,11 @@ import Entities.Card;
 public class LootBoxOutputData {
     private Card card;
 
-    public Card LootBoxOutputData(Card card){
-        return card;
+    public LootBoxOutputData(Card card){
+        this.card = card;
     }
 
+    public Card getCard() {
+        return card;
+    }
 }

@@ -7,7 +7,9 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.gallery.GalleryController;
 import interface_adapter.gallery.GalleryState;
 import interface_adapter.gallery.GalleryViewModel;
+import use_case.StatsGallery.StatsGalleryDataAccessInterface;
 import use_case.gallery.Gallery;
+import use_case.gallery.GalleryUserDataAccessInterface;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -31,31 +33,23 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
     // we have to keep track of two possible errors: cardView and back
     private final JButton backButton;
     private GalleryController galleryController;
+    private GalleryUserDataAccessInterface dao;
 
-    public GalleryView(GalleryViewModel viewModel, GalleryController galleryController) throws IOException {
+    public GalleryView(GalleryViewModel viewModel, GalleryController galleryController, GalleryUserDataAccessInterface dao) throws IOException {
         this.viewModel = viewModel;
         this.galleryController = galleryController;
+        this.dao = dao;
         this.viewModel.addPropertyChangeListener(this);
         JLabel title = new JLabel("gallery");
+        this.setLayout(new BorderLayout());
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
         JPanel buttons = new JPanel();
-        // TODO: expand this so that the number of cardViewButtons is equal to the number of cards in the gallery
         this.backButton = new JButton(GalleryViewModel.BACK_BUTTON_LABEL);
         buttons.add(backButton);
-//        this.cardViewButton = new JButton();
-//        String path = "/Users/dmitriivlasov/IdeaProjects/GenShi/src/view/img.png";
-//        Image image = new ImageIcon(path).getImage();
-//        image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-//
-//        this.cardViewButton.setIcon(new ImageIcon(image));
-//        buttons.add(cardViewButton);
-        FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
-        User user = cardDAO.getUser("TestUser");
-        cardDAO.setActiveUser(user);
 
-        Gallery gallery = new Gallery(cardDAO);
+        Gallery gallery = new Gallery(dao);
         HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
         for (Map.Entry<Card, Boolean> entry : booleanHashMap.entrySet()) {
             Card card = entry.getKey();
@@ -106,13 +100,23 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                         if (evt.getSource().equals(backButton)) {
                             GalleryState currentState = viewModel.getState(); // not really needed here
                             // use your controller(s)
+                            galleryController.executeBack();
                         }
                     }
                 }
         );
+        title.setFont(new Font("Arial", Font.BOLD, 20));
+        title.setHorizontalAlignment(JLabel.CENTER);
+        this.add(title, BorderLayout.NORTH);
+
+        buttons.setLayout(new GridLayout(0, 4, 10, 10)); // Grid layout with margins
+        buttons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Padding
+
 
 
         this.add(buttons);
+        JScrollPane scrollPane = new JScrollPane(buttons);
+        this.add(scrollPane, BorderLayout.CENTER);
     }
 
     private boolean canLoadImage(String imagePath) {

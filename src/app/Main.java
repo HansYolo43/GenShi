@@ -6,6 +6,7 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.card_stats.CardStatsViewModel;
 import interface_adapter.gallery.GalleryViewModel;
 import interface_adapter.gambling.GamblingViewModel;
+import interface_adapter.generatecard.GenerateCardViewModel;
 import interface_adapter.main_menu.MainMenuViewModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupViewModel;
@@ -21,6 +22,7 @@ public class Main {
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         application.setDefaultLookAndFeelDecorated(true);
         application.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.cyan));
+        application.setPreferredSize(new Dimension(800, 600));
 
         CardLayout cardLayout = new CardLayout();
 
@@ -50,6 +52,7 @@ public class Main {
         GalleryViewModel galleryViewModel = new GalleryViewModel();
         GamblingViewModel gamblingViewModel = new GamblingViewModel();
         CardStatsViewModel cardStatsViewModel = new CardStatsViewModel();
+        GenerateCardViewModel generateCardViewModel = new GenerateCardViewModel();
 
 
         FileCardDataAccessObject userDataAccessObject;
@@ -69,21 +72,25 @@ public class Main {
 
         // this hopefully has logout embedded
         //MainMenuView loggedInView = LogoutUseCaseFactory.create(viewManagerModel,loginViewModel,mainMenuViewModel);
-        MainMenuView loggedInView = MainMenuUseCaseFactory.create(viewManagerModel, loggedInViewModel, galleryViewModel, loginViewModel, gamblingViewModel);
+        MainMenuView loggedInView = MainMenuUseCaseFactory.create(viewManagerModel, loggedInViewModel, galleryViewModel, loginViewModel, gamblingViewModel,generateCardViewModel);
         views.add(loggedInView, loggedInView.viewName);  // todo, change name convention
-
-
         GalleryView galleryView = GalleryUseCaseFactory.create(viewManagerModel, galleryViewModel, cardStatsViewModel, cardDAO);
         views.add(galleryView, galleryView.viewName);
-        GamblingView gamblingView = new GamblingView(gamblingViewModel);
+        GamblingView gamblingView = GamblingUseCaseFactory.create(viewManagerModel, gamblingViewModel, cardDAO);
         views.add(gamblingView, gamblingView.viewName);
-        //CardStatsView cardStatsView = new CardStatsView(cardStatsViewModel);
-        //views.add(cardStatsView, cardStatsView.viewName);
+        CardStatsView cardStatsView = CardStatsUseCaseFactory.create(viewManagerModel, cardStatsViewModel);
+        views.add(cardStatsView, cardStatsView.viewName);
+        GenerateCardView generateCardView = GenerateCardUseCaseFactory.createGenerateCardView(cardDAO, viewManagerModel);
+        views.add(generateCardView, generateCardView.viewName);
 
+        //viewManagerModel.setActiveView(mainMenuView.viewName); -uncomment if you want to test yours
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
+        application.setLocationRelativeTo(null); // Center the frame on screen
         application.setVisible(true);
-    }}
+
+    }
+}
 

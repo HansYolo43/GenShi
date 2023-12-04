@@ -13,4 +13,8 @@ public class GalleryController {
     public void execute(Card card) {
         galleryInteractor.execute(card);
     }
+
+    public void executeBack() {
+        galleryInteractor.executeBack();
+    }
 }

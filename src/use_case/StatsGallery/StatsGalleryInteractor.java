@@ -2,6 +2,7 @@ package use_case.StatsGallery;
 
 import Entities.Card;
 import data_access.FileCardDataAccessObject;
+import use_case.cardStats.CardStatsInputBoundary;
 
 public class StatsGalleryInteractor {
     private StatsGalleryDataAccessInterface fileCardDataAccessObject = null;
