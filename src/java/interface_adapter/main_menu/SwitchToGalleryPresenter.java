@@ -26,7 +26,6 @@ public class SwitchToGalleryPresenter implements SwitchToGalleryOutputBoundary {
     @Override
     public void prepareFailView(String error) {
         MainMenuState mainMenuState = mainMenuViewModel.getState();
-        mainMenuState.setGalleryError(error);
         mainMenuViewModel.firePropertyChanged();
     }
 }

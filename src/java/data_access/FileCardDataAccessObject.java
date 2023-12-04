@@ -6,7 +6,9 @@ import Entities.Stats;
 import Entities.User;
 import use_case.StatsGallery.StatsGalleryDataAccessInterface;
 import use_case.gallery.GalleryUserDataAccessInterface;
+import use_case.login.LoginUserDataAcesssInterface;
 import use_case.lootbox.LootboxUserDataAccessInterface;
+import use_case.signup.SignupUserDataAcesssInterface;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -17,7 +19,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
-public class FileCardDataAccessObject implements LootboxUserDataAccessInterface, GalleryUserDataAccessInterface, StatsGalleryDataAccessInterface {
+public class FileCardDataAccessObject implements LootboxUserDataAccessInterface, GalleryUserDataAccessInterface, StatsGalleryDataAccessInterface, SignupUserDataAcesssInterface, LoginUserDataAcesssInterface {
 
     private final ArrayList<Integer> CardArray = new ArrayList<>();
 

@@ -27,7 +27,6 @@ public class SwitchToGamblingPresenter implements SwitchToGamblingOutputBoundary
     @Override
     public void prepareFailView(String error) {
         MainMenuState mainMenuState = mainMenuViewModel.getState();
-        mainMenuState.setGamblingError(error);
         mainMenuViewModel.firePropertyChanged();
     }
 }
