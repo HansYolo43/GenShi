@@ -6,6 +6,8 @@ public class MainMenuState {
     private String gamblingError = null;
     private String gameError = null;
     private String logoutError = null;
+
+    String username = "";
     public MainMenuState(MainMenuState copy) {
         galleryError = copy.galleryError;
         gamblingError = copy.gamblingError;
@@ -36,5 +38,13 @@ public class MainMenuState {
     }
     public void setLogoutError(String logoutError) {
         this.logoutError = logoutError;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

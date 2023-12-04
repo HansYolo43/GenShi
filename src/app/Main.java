@@ -8,14 +8,14 @@ import interface_adapter.gallery.GalleryViewModel;
 import interface_adapter.gambling.GamblingViewModel;
 import interface_adapter.generatecard.GenerateCardViewModel;
 import interface_adapter.main_menu.MainMenuViewModel;
+import interface_adapter.login.LoginViewModel;
+import interface_adapter.signup.SignupViewModel;
 import view.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         System.out.println("Hello, world!");
         JFrame application = new JFrame("Main Menu Test");
@@ -23,7 +23,6 @@ public class Main {
         application.setDefaultLookAndFeelDecorated(true);
         application.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.cyan));
         application.setPreferredSize(new Dimension(800, 600));
-
 
         CardLayout cardLayout = new CardLayout();
 
@@ -36,6 +35,8 @@ public class Main {
         new ViewManager(views, cardLayout, viewManagerModel);
 
         //TODO: switch to common user after merge with login systems
+
+        // comment this out
         FileCardDataAccessObject cardDAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
         User user = cardDAO.getUser("TestUser");
         cardDAO.setActiveUser(user);
@@ -44,15 +45,35 @@ public class Main {
         // This information will be changed by a presenter object that is reporting the
         // results from the use case. The ViewModels are observable, and will
         // be observed by the Views.
-        MainMenuViewModel mainMenuViewModel = new MainMenuViewModel();
+        LoginViewModel loginViewModel = new LoginViewModel();
+        //LoggedInViewModel loggedInViewModel = new LoggedInViewModel();
+        SignupViewModel signupViewModel = new SignupViewModel();
+        MainMenuViewModel loggedInViewModel = new MainMenuViewModel();
         GalleryViewModel galleryViewModel = new GalleryViewModel();
         GamblingViewModel gamblingViewModel = new GamblingViewModel();
         CardStatsViewModel cardStatsViewModel = new CardStatsViewModel();
         GenerateCardViewModel generateCardViewModel = new GenerateCardViewModel();
 
-        MainMenuView mainMenuView = MainMenuUseCaseFactory.create(viewManagerModel, mainMenuViewModel, galleryViewModel, gamblingViewModel, generateCardViewModel);
-        views.add(mainMenuView, mainMenuView.viewName);
-        //TODO: remove the temp optimisation
+
+        FileCardDataAccessObject userDataAccessObject;
+        try { //TODO: possible bug?
+            userDataAccessObject = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel,
+                userDataAccessObject, loggedInViewModel);
+        views.add(signupView, signupView.viewName);
+
+        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
+        views.add(loginView, loginView.viewName);
+//        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
+
+        // this hopefully has logout embedded
+        //MainMenuView loggedInView = LogoutUseCaseFactory.create(viewManagerModel,loginViewModel,mainMenuViewModel);
+        MainMenuView loggedInView = MainMenuUseCaseFactory.create(viewManagerModel, loggedInViewModel, galleryViewModel, loginViewModel, gamblingViewModel,generateCardViewModel);
+        views.add(loggedInView, loggedInView.viewName);  // todo, change name convention
         GalleryView galleryView = GalleryUseCaseFactory.create(viewManagerModel, galleryViewModel, cardStatsViewModel, cardDAO);
         views.add(galleryView, galleryView.viewName);
         GamblingView gamblingView = GamblingUseCaseFactory.create(viewManagerModel, gamblingViewModel, cardDAO);
@@ -62,7 +83,8 @@ public class Main {
         GenerateCardView generateCardView = GenerateCardUseCaseFactory.createGenerateCardView(cardDAO, viewManagerModel);
         views.add(generateCardView, generateCardView.viewName);
 
-        viewManagerModel.setActiveView(mainMenuView.viewName);
+        //viewManagerModel.setActiveView(mainMenuView.viewName); -uncomment if you want to test yours
+        viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
