@@ -14,6 +14,10 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
     private String cardName;
     private String rarity;
     private String description;
+    private JLabel cardImage;
+    private JLabel cardNameLabel;
+    private JLabel rarityLabel;
+    private JLabel descriptionLabel;
 
     private JButton
 
@@ -26,19 +30,20 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
         CardStatsState state = viewModel.getState();
-        JLabel cardImage = new JLabel(new ImageIcon(state.getImgpath()));
-        cardImage.setAlignmentX(CENTER_ALIGNMENT);
-        viewModel.firePropertyChanged();
+        String path = state.getImgpath();
+        path = path.replace("\\", "/");
+        this.cardImage = new JLabel(new ImageIcon(path));
+        this.cardImage.setAlignmentX(CENTER_ALIGNMENT);
         this.cardName = state.getName();
         this.rarity = state.getRarity();
         this.description = state.getDescription();
-        JLabel cardName = new JLabel("name: " + this.cardName);
-        JLabel rarity = new JLabel("rarity: " + this.rarity);
-        JLabel cardDescription = new JLabel("desc: " + this.description);
+        this.cardNameLabel = new JLabel("name: " + this.cardName);
+        this.rarityLabel = new JLabel("rarity: " + this.rarity);
+        this.descriptionLabel = new JLabel("desc: " + this.description);
         this.add(cardImage);
-        this.add(cardName);
-        this.add(rarity);
-        this.add(cardDescription);
+        this.add(cardNameLabel);
+        this.add(rarityLabel);
+        this.add(descriptionLabel);
     }
 
     @Override
@@ -55,15 +60,13 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
         this.rarity = state.getRarity();
         this.description = state.getDescription();
 
-        JLabel cardName = new JLabel("name: " + this.cardName);
-        JLabel rarity = new JLabel("rarity: " + this.rarity);
-        JLabel cardDescription = new JLabel("desc: " + this.description);
 
-        this.add(cardName);
-        this.add(rarity);
-        this.add(cardDescription);
-
-        this.cardName = new
-
+        cardNameLabel.setText("name: " + this.cardName);
+        rarityLabel.setText("rarity: " + this.rarity);
+        descriptionLabel.setText("desc: " + this.description);
+        this.add(cardImage);
+        this.add(cardNameLabel);
+        this.add(rarityLabel);
+        this.add(descriptionLabel);
     }
 }

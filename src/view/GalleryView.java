@@ -88,6 +88,8 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                                 GalleryState currentState = viewModel.getState(); // not really needed here
                                 // use your controller(s)
                                 System.out.println("Card view button clicked");
+                                System.out.println(card.getName());
+                                viewModel.firePropertyChanged();
                                 galleryController.execute(card);
                                 viewModel.firePropertyChanged();
                             }
