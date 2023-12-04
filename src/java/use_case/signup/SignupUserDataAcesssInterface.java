@@ -7,4 +7,6 @@ public interface SignupUserDataAcesssInterface {
 
     void addUser(User user);
 
+    void setActiveUser(User user);
+
 }

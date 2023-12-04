@@ -35,6 +35,10 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
     private GalleryController galleryController;
     private GalleryUserDataAccessInterface dao;
 
+    private JPanel buttons;
+
+    private final JButton refreshButton;
+
     public GalleryView(GalleryViewModel viewModel, GalleryController galleryController, GalleryUserDataAccessInterface dao) throws IOException {
         this.viewModel = viewModel;
         this.galleryController = galleryController;
@@ -45,14 +49,26 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
-        JPanel buttons = new JPanel();
+        this.buttons = new JPanel();
+
+
         this.backButton = new JButton(GalleryViewModel.BACK_BUTTON_LABEL);
         buttons.add(backButton);
 
-        FileCardDataAccessObject DAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
-        DAO.setActiveUser(dao.getActiveUser());
+        this.refreshButton = new JButton("Refresh Gallery");
+        buttons.add(refreshButton);
 
-        Gallery gallery = new Gallery(DAO);
+        refreshButton.addActionListener(evt -> {
+            try {
+                updateGalleryView(dao);
+            } catch (IOException e) {
+                e.printStackTrace(); // handle exception appropriately
+            }
+        });
+
+
+
+        Gallery gallery = new Gallery(dao);
         HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
 
         for (Map.Entry<Card, Boolean> entry : booleanHashMap.entrySet()) {
@@ -143,10 +159,83 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
         // this is for error messages
         GalleryState state = (GalleryState) evt.getNewValue();
         if (state.getBackError() != null) {
+            try {
+                updateGalleryView(dao);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             JOptionPane.showMessageDialog(this, state.getBackError());
         }
         if (state.getCardViewError() != null) {
             JOptionPane.showMessageDialog(this, state.getCardViewError());
         }
+    }
+
+    public void updateGalleryView(GalleryUserDataAccessInterface dao) throws IOException {
+        // Clear existing buttons
+        buttons.removeAll();
+
+        // Add back button and any other static buttons
+        buttons.add(backButton);
+        buttons.add(refreshButton);
+
+        // Fetch the latest data from DAO
+
+        Gallery gallery = new Gallery(dao);
+        HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
+
+        for (Map.Entry<Card, Boolean> entry : booleanHashMap.entrySet()) {
+            Card card = entry.getKey();
+            JButton cardViewButton = new JButton();
+            String imgPath = card.getimgpath();
+            if (!canLoadImage(imgPath)) {
+                imgPath = imgPath.replace("\\", "/");
+                // Set a default icon or handle the error
+                if (!canLoadImage(imgPath)) {
+                    System.out.println("Image there: " + imgPath);
+                }
+            }
+
+            Image image = ImageIO.read(new File(imgPath));
+            // convert to grayscale if the player does not have it
+            if (!entry.getValue()) {
+                ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
+                ColorConvertOp op = new ColorConvertOp(cs, null);
+                BufferedImage bi = op.filter((BufferedImage) image, null);
+                image = bi.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            }
+            else {
+                image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            }
+            cardViewButton.setIcon(new ImageIcon(image));
+            cardViewButton.addActionListener(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent evt) {
+                            if (evt.getSource().equals(cardViewButton)) {
+                                GalleryState currentState = viewModel.getState(); // not really needed here
+                                // use your controller(s)
+                                System.out.println("Card view button clicked");
+                                System.out.println(card.getName());
+                                viewModel.firePropertyChanged();
+                                galleryController.execute(card);
+                                viewModel.firePropertyChanged();
+                            }
+                        }
+                    }
+            );
+            buttons.add(cardViewButton);
+        }
+
+
+
+
+
+        buttons.setLayout(new GridLayout(0, 4, 10, 10));
+        buttons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ensure the updated buttons panel is displayed correctly
+        buttons.revalidate();
+        buttons.repaint();
+
     }
 }

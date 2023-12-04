@@ -1,5 +1,9 @@
 package use_case.main_menu;
 
+import data_access.FileCardDataAccessObject;
+import interface_adapter.gallery.GalleryState;
+import view.GalleryView;
+
 public class SwitchToGalleryInteractor implements SwitchToGalleryInputBoundary{
     final SwitchToGalleryOutputBoundary switchToGalleryPresenter;
 
@@ -9,4 +13,6 @@ public class SwitchToGalleryInteractor implements SwitchToGalleryInputBoundary{
     public void execute() {
         switchToGalleryPresenter.prepareSuccessView();
     }
+
+
 }

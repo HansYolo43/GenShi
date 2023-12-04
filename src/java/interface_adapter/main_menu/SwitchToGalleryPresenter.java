@@ -3,6 +3,7 @@ package interface_adapter.main_menu;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.gallery.GalleryViewModel;
 import use_case.main_menu.SwitchToGalleryOutputBoundary;
+import view.GalleryView;
 
 public class SwitchToGalleryPresenter implements SwitchToGalleryOutputBoundary {
     private final MainMenuViewModel mainMenuViewModel;
@@ -21,6 +22,8 @@ public class SwitchToGalleryPresenter implements SwitchToGalleryOutputBoundary {
         // Fixed the issue here.
         viewManagerModel.setActiveView(galleryViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
+
+
     }
 
     @Override
