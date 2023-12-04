@@ -3,7 +3,6 @@ package app;
 import data_access.FileCardDataAccessObject;
 import interface_adapter.gallery.GalleryViewModel;
 import interface_adapter.login.LoginViewModel;
-import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.main_menu.MainMenuViewModel;
 import interface_adapter.signup.SignupViewModel;
 import interface_adapter.ViewManagerModel;
@@ -51,7 +50,7 @@ public class Main {
         }
 
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel,
-                userDataAccessObject);
+                userDataAccessObject,loggedInViewModel);
 
         views.add(signupView, signupView.viewName);
 
