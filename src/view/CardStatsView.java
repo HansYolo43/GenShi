@@ -19,8 +19,6 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
     private JLabel rarityLabel;
     private JLabel descriptionLabel;
 
-    private JButton
-
     public CardStatsView(CardStatsViewModel viewModel) {
         this.viewModel = viewModel;
         this.viewModel.addPropertyChangeListener(this);
