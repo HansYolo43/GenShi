@@ -53,8 +53,8 @@ public class Main {
         MainMenuView mainMenuView = MainMenuUseCaseFactory.create(viewManagerModel, mainMenuViewModel, galleryViewModel, gamblingViewModel, generateCardViewModel);
         views.add(mainMenuView, mainMenuView.viewName);
         //TODO: remove the temp optimisation
-//        GalleryView galleryView = GalleryUseCaseFactory.create(viewManagerModel, galleryViewModel, cardStatsViewModel, cardDAO);
-//        views.add(galleryView, galleryView.viewName);
+        GalleryView galleryView = GalleryUseCaseFactory.create(viewManagerModel, galleryViewModel, cardStatsViewModel, cardDAO);
+        views.add(galleryView, galleryView.viewName);
         GamblingView gamblingView = GamblingUseCaseFactory.create(viewManagerModel, gamblingViewModel, cardDAO);
         views.add(gamblingView, gamblingView.viewName);
         CardStatsView cardStatsView = CardStatsUseCaseFactory.create(viewManagerModel, cardStatsViewModel);
