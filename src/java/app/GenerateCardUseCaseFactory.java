@@ -12,12 +12,12 @@ import use_case.generatecard.GenerateCardOutputBoundary;
 import view.GenerateCardView;
 
 public class GenerateCardUseCaseFactory {
-    public static GenerateCardView createGenerateCardView(FileCardDataAccessObject fileCardDataAccessObject) {
+    public static GenerateCardView createGenerateCardView(FileCardDataAccessObject fileCardDataAccessObject, ViewManagerModel viewManagerModel) {
         // Instantiate the ViewModel
         GenerateCardViewModel viewModel = new GenerateCardViewModel();
 
         // Instantiate the Presenter
-        GenerateCardPresenter presenter = new GenerateCardPresenter(viewModel);
+        GenerateCardPresenter presenter = new GenerateCardPresenter(viewManagerModel, viewModel);
 
         // Instantiate the Interactor
         GenerateCardInteractor interactor = new GenerateCardInteractor(fileCardDataAccessObject, "APIkEY", presenter);

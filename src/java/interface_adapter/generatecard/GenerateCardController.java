@@ -12,4 +12,8 @@ public class GenerateCardController {
     public void onClickGenerate(String theme) {
         interactor.execute(theme);
     }
+
+    public void executeBack() {
+        interactor.executeBack();
+    }
 }

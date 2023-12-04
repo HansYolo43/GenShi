@@ -2,7 +2,7 @@ package Entities;
 
 public class Card {
     private final Integer Id;
-    private final String name;
+    private String name;
     private final int imageID;
     private String imgpath;
     private Stats stats;
@@ -62,4 +62,6 @@ public class Card {
     }
 
 
+    public void setName(String updatedTestCard) {this.name = name;
+    }
 }

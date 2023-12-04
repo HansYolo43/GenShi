@@ -49,8 +49,12 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
         this.backButton = new JButton(GalleryViewModel.BACK_BUTTON_LABEL);
         buttons.add(backButton);
 
-        Gallery gallery = new Gallery(dao);
+        FileCardDataAccessObject DAO = new FileCardDataAccessObject("src/DB/cards.txt", "src/db/cards.db");
+        DAO.setActiveUser(dao.getActiveUser());
+
+        Gallery gallery = new Gallery(DAO);
         HashMap<Card, Boolean> booleanHashMap = (gallery.execute());
+
         for (Map.Entry<Card, Boolean> entry : booleanHashMap.entrySet()) {
             Card card = entry.getKey();
             JButton cardViewButton = new JButton();

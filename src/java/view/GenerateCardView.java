@@ -12,8 +12,10 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class GenerateCardView extends JPanel implements ActionListener, PropertyChangeListener {
+    public final String viewName = "generate_card";
     private final JTextField themeInputField;
     private final JButton generateButton;
+    private final JButton backButton;
     private final JLabel cardImageLabel;
     private final JLabel cardDisplayLabel;
     private final JLabel errorLabel;
@@ -27,6 +29,7 @@ public class GenerateCardView extends JPanel implements ActionListener, Property
         // Initialize UI components
         themeInputField = new JTextField(20);
         generateButton = new JButton("Generate Card");
+        backButton = new JButton("Back");
         cardImageLabel = new JLabel();
         cardDisplayLabel = new JLabel();
         errorLabel = new JLabel();
@@ -36,12 +39,14 @@ public class GenerateCardView extends JPanel implements ActionListener, Property
         add(cardImageLabel);
         add(themeInputField);
         add(generateButton);
+        add(backButton);
 
         add(cardDisplayLabel);
         add(errorLabel);
 
         // Action Listener
         generateButton.addActionListener(this);
+        backButton.addActionListener(e -> generateCardController.executeBack());
         generateCardViewModel.addPropertyChangeListener(this);
     }
 

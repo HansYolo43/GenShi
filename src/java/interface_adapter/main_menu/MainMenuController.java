@@ -3,18 +3,19 @@ package interface_adapter.main_menu;
 import use_case.main_menu.MainMenuInputBoundary;
 import use_case.main_menu.SwitchToGalleryInputBoundary;
 import use_case.main_menu.SwitchToGamblingInputBoundary;
+import use_case.main_menu.SwitchToGenerateCardInputBoundary;
 
 public class MainMenuController {
     final SwitchToGalleryInputBoundary switchToGalleryInteractor;
     final SwitchToGamblingInputBoundary switchToGamblingInteractor;
-    final MainMenuInputBoundary switchToGameInteractor;
+    final SwitchToGenerateCardInputBoundary switchToGenerateCardInteractor;
     final MainMenuInputBoundary logoutInteractor;
 
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor, MainMenuInputBoundary switchToGameInteractor, MainMenuInputBoundary logoutInteractor) {
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor, SwitchToGenerateCardInputBoundary SwitchToGenerateCardInteractor, MainMenuInputBoundary logoutInteractor) {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
         this.switchToGamblingInteractor = switchToGamblingInteractor;
-        this.switchToGameInteractor = switchToGameInteractor;
+        this.switchToGenerateCardInteractor = SwitchToGenerateCardInteractor;
         this.logoutInteractor = logoutInteractor;
     }
 
@@ -23,16 +24,16 @@ public class MainMenuController {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
         this.switchToGamblingInteractor = switchToGamblingInteractor;
-        this.switchToGameInteractor = null;
+        this.switchToGenerateCardInteractor = null;
         this.logoutInteractor = null;
     }
 
     // for debugging
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor) {
+    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor, SwitchToGenerateCardInputBoundary SwitchToGenerateCardInteractor) {
 
         this.switchToGalleryInteractor = switchToGalleryInteractor;
-        this.switchToGamblingInteractor = null;
-        this.switchToGameInteractor = null;
+        this.switchToGamblingInteractor = switchToGamblingInteractor;
+        this.switchToGenerateCardInteractor = SwitchToGenerateCardInteractor;
         this.logoutInteractor = null;
     }
 
@@ -45,7 +46,7 @@ public class MainMenuController {
     }
 
     public void executeGenerateCard() {
-        // TODO: Implement
+        switchToGenerateCardInteractor.execute();
     }
 
     public void executeLogout() {
