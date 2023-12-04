@@ -3,7 +3,6 @@ package interface_adapter.main_menu;
 import use_case.main_menu.MainMenuInputBoundary;
 import use_case.main_menu.SwitchToGalleryInputBoundary;
 import use_case.main_menu.SwitchToGamblingInputBoundary;
-import use_case.main_menu.SwitchToGamblingOutputBoundary;
 
 public class MainMenuController {
     final SwitchToGalleryInputBoundary switchToGalleryInteractor;
