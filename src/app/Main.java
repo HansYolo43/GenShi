@@ -21,6 +21,7 @@ public class Main {
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         application.setDefaultLookAndFeelDecorated(true);
         application.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.cyan));
+        application.setPreferredSize(new Dimension(800, 600));
 
 
         CardLayout cardLayout = new CardLayout();
@@ -61,6 +62,7 @@ public class Main {
         viewManagerModel.firePropertyChanged();
 
         application.pack();
+        application.setLocationRelativeTo(null); // Center the frame on screen
         application.setVisible(true);
 
     }
