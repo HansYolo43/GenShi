@@ -19,6 +19,7 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
     public final String viewName = "card_stats";
     private final CardStatsViewModel viewModel;
 
+    private String cardImgPath;
     private String cardName;
     private String rarity;
     private String description;
@@ -35,9 +36,7 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
         CardStatsState state = viewModel.getState();
-        String path = state.getImgpath();
-        path = path.replace("\\", "/");
-        this.cardImage = new JLabel(new ImageIcon(path));
+        this.cardImage = new JLabel(new ImageIcon(state.getImgpath()));
         this.cardImage.setAlignmentX(CENTER_ALIGNMENT);
         this.cardName = state.getName();
         this.rarity = state.getRarity();
@@ -62,6 +61,8 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
         this.cardName = state.getName();
         this.rarity = state.getRarity();
         this.description = state.getDescription();
+        this.cardImgPath = state.getImgpath();
+        cardImage.setIcon(new ImageIcon(this.cardImgPath));
         cardNameLabel.setText("name: " + this.cardName);
         rarityLabel.setText("rarity: " + this.rarity);
         descriptionLabel.setText("desc: " + this.description);
