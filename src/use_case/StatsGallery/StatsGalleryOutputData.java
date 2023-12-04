@@ -5,11 +5,12 @@ import Entities.Card;
 public class StatsGalleryOutputData {
     private Card card;
 
-    public StatsGalleryOutputData (Card card){
+    public StatsGalleryOutputData(Card card) {
         this.card = card;
 
     }
-    public Card getCard(){
+
+    public Card getCard() {
         return card;
     }
 }
