@@ -44,7 +44,7 @@ public class MainMenuController {
         switchToGamblingInteractor.execute();
     }
 
-    public void executeGame() {
+    public void executeGenerateCard() {
         // TODO: Implement
     }
 

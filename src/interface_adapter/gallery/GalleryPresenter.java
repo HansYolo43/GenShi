@@ -35,7 +35,8 @@ public class GalleryPresenter implements GalleryOutputBoundary {
         viewManagerModel.firePropertyChanged();
     }
 
-    public void prepareErrorView(String error) {
-        System.out.println("GalleryPresenter: prepareErrorView");
+    public void prepareBackView() {
+        viewManagerModel.setActiveView("main_menu");
+        viewManagerModel.firePropertyChanged();
     }
 }

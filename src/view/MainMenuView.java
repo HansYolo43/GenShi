@@ -11,7 +11,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class MainMenuView extends JPanel implements ActionListener, PropertyChangeListener {
-    public final String viewName = "main menu";
+    public final String viewName = "main_menu";
     private final MainMenuViewModel viewModel;
     // we have to keep track of four possible buttons: gallery, gambling, game, and logout
     private final JButton galleryButton;
@@ -65,7 +65,7 @@ public class MainMenuView extends JPanel implements ActionListener, PropertyChan
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(gameButton)) {
                             MainMenuState currentState = viewModel.getState(); // not really needed here
-                            mainMenuController.executeGame();
+                            //mainMenuController.executeGame();
                         }
                     }
                 }

@@ -3,7 +3,7 @@ package use_case.lootbox;
 public interface LootBoxOutputBoundary {
 
 
-    void prepareSuccessView();
+    void prepareSuccessView(LootBoxOutputData outputData);
 
-    void prepareFailView(String error);
+    void prepareBackView();
 }

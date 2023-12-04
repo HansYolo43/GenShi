@@ -3,6 +3,7 @@ package view;
 import Entities.Card;
 import Entities.User;
 import data_access.FileCardDataAccessObject;
+import interface_adapter.card_stats.CardStatsController;
 import interface_adapter.card_stats.CardStatsState;
 import interface_adapter.card_stats.CardStatsViewModel;
 import interface_adapter.main_menu.MainMenuState;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 public class CardStatsView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "card_stats";
     private final CardStatsViewModel viewModel;
+    private final CardStatsController controller;
 
     private String cardImgPath;
     private String cardName;
@@ -28,9 +30,12 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
     private JLabel rarityLabel;
     private JLabel descriptionLabel;
 
-    public CardStatsView(CardStatsViewModel viewModel) {
+    private JButton backButton;
+
+    public CardStatsView(CardStatsViewModel viewModel, CardStatsController controller) {
         this.viewModel = viewModel;
         this.viewModel.addPropertyChangeListener(this);
+        this.controller = controller;
         JLabel title = new JLabel("card_stats");
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -48,6 +53,14 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
         this.add(cardNameLabel);
         this.add(rarityLabel);
         this.add(descriptionLabel);
+
+        backButton = new JButton("back");
+        backButton.setAlignmentX(CENTER_ALIGNMENT);
+        this.add(backButton);
+
+        backButton.addActionListener(e -> {
+            controller.executeBack();
+        });
     }
 
     @Override

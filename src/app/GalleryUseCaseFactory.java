@@ -9,17 +9,18 @@ import use_case.StatsGallery.StatsGalleryDataAccessInterface;
 import use_case.gallery.GalleryInputBoundary;
 import use_case.gallery.GalleryInteractor;
 import use_case.gallery.GalleryOutputBoundary;
+import use_case.gallery.GalleryUserDataAccessInterface;
 import view.GalleryView;
 
 import java.io.IOException;
 
 public class GalleryUseCaseFactory {
-    public static GalleryView create(ViewManagerModel viewManagerModel, GalleryViewModel galleryViewModel, CardStatsViewModel cardStatsViewModel, StatsGalleryDataAccessInterface StatsGalleryDataAccessInterface) throws IOException {
-        GalleryController galleryController = createGalleryUseCase(viewManagerModel, galleryViewModel, cardStatsViewModel, StatsGalleryDataAccessInterface);
-        return new GalleryView(galleryViewModel, galleryController);
+    public static GalleryView create(ViewManagerModel viewManagerModel, GalleryViewModel galleryViewModel, CardStatsViewModel cardStatsViewModel, GalleryUserDataAccessInterface dao) throws IOException {
+        GalleryController galleryController = createGalleryUseCase(viewManagerModel, galleryViewModel, cardStatsViewModel, dao);
+        return new GalleryView(galleryViewModel, galleryController, dao);
     }
 
-    private static GalleryController createGalleryUseCase(ViewManagerModel viewManagerModel, GalleryViewModel galleryViewModel, CardStatsViewModel cardStatsViewModel, StatsGalleryDataAccessInterface StatsGalleryDataAccessInterface) {
+    private static GalleryController createGalleryUseCase(ViewManagerModel viewManagerModel, GalleryViewModel galleryViewModel, CardStatsViewModel cardStatsViewModel, GalleryUserDataAccessInterface dao) {
 
         // Notice how we pass this method's parameters to the Presenter.
         GalleryOutputBoundary galleryPresenter = new GalleryPresenter(viewManagerModel, galleryViewModel, cardStatsViewModel);
