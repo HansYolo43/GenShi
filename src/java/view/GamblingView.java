@@ -1,6 +1,5 @@
 package view;
 
-import interface_adapter.gallery.GalleryState;
 import interface_adapter.gallery.GalleryViewModel;
 import interface_adapter.gambling.GamblingController;
 import interface_adapter.gambling.GamblingState;
@@ -88,6 +87,15 @@ public class GamblingView extends JPanel implements ActionListener, PropertyChan
         this.rarity = state.getRarity();
         this.description = state.getDescription();
         this.cardImgPath = state.getImgpath();
+
+        if (!canLoadImage(cardImgPath)) {
+            cardImgPath = cardImgPath.replace("\\", "/");
+            // Set a default icon or handle the error
+            if (!canLoadImage(cardImgPath)) {
+                System.out.println("Image there: " + cardImgPath);
+            }
+        }
+
         cardImage.setIcon(new ImageIcon(this.cardImgPath));
         cardNameLabel.setText("name: " + this.cardName);
         rarityLabel.setText("rarity: " + this.rarity);
@@ -96,5 +104,13 @@ public class GamblingView extends JPanel implements ActionListener, PropertyChan
         this.add(cardNameLabel);
         this.add(rarityLabel);
         this.add(descriptionLabel);
+    }
+    private boolean canLoadImage(String imagePath) {
+        try {
+            ImageIcon icon = new ImageIcon(imagePath);
+            return icon.getImageLoadStatus() == MediaTracker.COMPLETE;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
