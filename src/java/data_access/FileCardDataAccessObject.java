@@ -154,6 +154,7 @@ public class FileCardDataAccessObject implements LootboxUserDataAccessInterface,
 
     }
 
+    @Override
     public void setActiveUser(User user){
         this.Commonuser = user;
     }

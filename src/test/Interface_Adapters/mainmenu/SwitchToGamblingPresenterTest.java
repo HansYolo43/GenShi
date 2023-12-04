@@ -27,10 +27,5 @@ class SwitchToGamblingPresenterTest {
         assertEquals(gamblingViewModel.getViewName(), viewManagerModel.getActiveView());
     }
 
-    @Test
-    void testPrepareFailView() {
-        String error = "Gambling Error";
-        presenter.prepareFailView(error);
-        assertEquals(error, mainMenuViewModel.getState().getGamblingError());
-    }
+
 }

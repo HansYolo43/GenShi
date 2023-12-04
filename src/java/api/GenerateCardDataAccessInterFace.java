@@ -103,7 +103,7 @@ public class GenerateCardDataAccessInterFace {
         return con;
     }
 
-    private JSONObject createData(String prompt) {
+    public JSONObject createData(String prompt) {
         JSONObject data = new JSONObject();
         JSONArray messages = new JSONArray();
 

@@ -36,6 +36,7 @@ public class SignupInteractor implements SignupInputBoundary {
                 //userPresenter.prepareFailView("User already exists.");
                 LoginOutputData loginOutputData = new LoginOutputData(signupInputData.getUsername(), false);
                 loginpresenter.prepareSuccessView(loginOutputData);
+                userDataAccessObject.setActiveUser((userDataAccessObject.getUser(signupInputData.getUsername())));
 
             }else {userPresenter.prepareFailView("wrong password");}
 
@@ -55,6 +56,8 @@ public class SignupInteractor implements SignupInputBoundary {
 
             SignupOutputData signupOutputData = new SignupOutputData(user.getUsername(), false);
             userPresenter.prepareSuccessView(signupOutputData);
+
+            userDataAccessObject.setActiveUser((userDataAccessObject.getUser(signupInputData.getUsername())));
         }
     }
 }

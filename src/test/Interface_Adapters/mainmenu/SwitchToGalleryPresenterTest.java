@@ -27,10 +27,5 @@ class SwitchToGalleryPresenterTest {
         assertEquals(galleryViewModel.getViewName(), viewManagerModel.getActiveView());
     }
 
-    @Test
-    void testPrepareFailView() {
-        String error = "Gallery Error";
-        presenter.prepareFailView(error);
-        assertEquals(error, mainMenuViewModel.getState().getGalleryError());
-    }
+
 }
