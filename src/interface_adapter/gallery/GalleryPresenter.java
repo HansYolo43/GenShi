@@ -24,6 +24,9 @@ public class GalleryPresenter implements GalleryOutputBoundary {
         state.setRarity(card.getStats().getRarity());
         state.setDescription(card.getDesc());
         state.setImgpath(card.getimgpath());
+        String path = card.getimgpath();
+        path.replace("\\", "/");
+        state.setImgpath(path);
         cardStatsViewModel.setState(state);
         System.out.println(cardStatsViewModel.getState().getImgpath());
         cardStatsViewModel.firePropertyChanged();
@@ -32,7 +35,8 @@ public class GalleryPresenter implements GalleryOutputBoundary {
         viewManagerModel.firePropertyChanged();
     }
 
-    public void prepareErrorView(String error) {
-        System.out.println("GalleryPresenter: prepareErrorView");
+    public void prepareBackView() {
+        viewManagerModel.setActiveView("main_menu");
+        viewManagerModel.firePropertyChanged();
     }
 }

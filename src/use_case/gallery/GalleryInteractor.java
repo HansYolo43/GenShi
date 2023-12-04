@@ -11,4 +11,8 @@ public class GalleryInteractor implements GalleryInputBoundary {
     public void execute(Card card) {
         galleryPresenter.prepareSuccessView(card);
     }
+
+    public void executeBack() {
+        galleryPresenter.prepareBackView();
+    }
 }

@@ -1,27 +1,34 @@
 package view;
 
+import interface_adapter.card_stats.CardStatsController;
 import interface_adapter.card_stats.CardStatsState;
 import interface_adapter.card_stats.CardStatsViewModel;
 
 import javax.swing.*;
+
 import java.awt.*;
+
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 
 public class CardStatsView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "card_stats";
     private final CardStatsViewModel viewModel;
-
+    private final CardStatsController controller;
     private JLabel cardImageLabel;
+
+
     private JLabel cardNameLabel;
     private JLabel rarityLabel;
     private JLabel descriptionLabel;
 
     private JButton backButton;
 
-    public CardStatsView(CardStatsViewModel viewModel) {
+    public CardStatsView(CardStatsViewModel viewModel, CardStatsController controller) {
         this.viewModel = viewModel;
+        this.controller = controller;
         this.viewModel.addPropertyChangeListener(this);
+
 
         setLayout(new BorderLayout());
         JPanel headerPanel = new JPanel(new BorderLayout());
@@ -49,7 +56,10 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
 
         add(headerPanel, BorderLayout.CENTER);
         backButton = new JButton("Back");
-        backButton.addActionListener(this);
+        backButton.addActionListener(e -> {
+            controller.executeBack();
+        });
+
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         footerPanel.add(backButton);
         add(footerPanel, BorderLayout.SOUTH);
@@ -79,5 +89,6 @@ public class CardStatsView extends JPanel implements ActionListener, PropertyCha
 
             updateViewFromState((CardStatsState) evt.getNewValue());
         }
+
     }
 }

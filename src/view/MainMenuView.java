@@ -1,15 +1,20 @@
 package view;
 
+import interface_adapter.card_stats.CardStatsState;
 import interface_adapter.main_menu.MainMenuController;
+import interface_adapter.main_menu.MainMenuState;
 import interface_adapter.main_menu.MainMenuViewModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 
-public class MainMenuView extends JPanel implements ActionListener {
-    public final String viewName = "main menu";
+
+public class MainMenuView extends JPanel implements ActionListener, PropertyChangeListener {
+    public final String viewName = "main_menu";
+
     private final MainMenuViewModel viewModel;
     private final MainMenuController mainMenuController;
 
@@ -32,14 +37,14 @@ public class MainMenuView extends JPanel implements ActionListener {
         // Create the buttons and add them to the button panel
         JButton galleryButton = createButton(MainMenuViewModel.GALLERY_BUTTON_LABEL, e -> mainMenuController.executeGallery());
         JButton gamblingButton = createButton(MainMenuViewModel.GAMBLING_BUTTON_LABEL, e -> mainMenuController.executeGambling());
-        JButton gameButton = createButton(MainMenuViewModel.GAME_BUTTON_LABEL, e -> mainMenuController.executeGame());
+//        JButton gameButton = createButton(MainMenuViewModel.GAME_BUTTON_LABEL, e -> mainMenuController.executeGame());
         JButton logoutButton = createButton(MainMenuViewModel.LOGOUT_BUTTON_LABEL, e -> mainMenuController.executeLogout());
 
         // Add each button to the panel with some vertical glue to push them together
         buttonPanel.add(Box.createVerticalGlue());
         addButtonToPanel(galleryButton, buttonPanel);
         addButtonToPanel(gamblingButton, buttonPanel);
-        addButtonToPanel(gameButton, buttonPanel);
+//        addButtonToPanel(gameButton, buttonPanel);
         addButtonToPanel(logoutButton, buttonPanel);
         buttonPanel.add(Box.createVerticalGlue());
 
@@ -69,5 +74,13 @@ public class MainMenuView extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
         // Debug message
         System.out.println("Button Clicked: " + evt.getActionCommand());
+    }
+    @Override
+    public void propertyChange(java.beans.PropertyChangeEvent evt) {
+
+
+            MainMenuState state = (MainMenuState) evt.getNewValue();
+
+
     }
 }

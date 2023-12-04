@@ -13,7 +13,7 @@ public class MainMenuViewModel extends ViewModel {
 
     private MainMenuState state = new MainMenuState();
     public MainMenuViewModel() {
-        super("main menu");
+        super("main_menu");
     }
 
     public void setState(MainMenuState state) {
