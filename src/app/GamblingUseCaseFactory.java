@@ -23,7 +23,7 @@ public class GamblingUseCaseFactory {
     private static MainMenuController createGalleryUseCase(ViewManagerModel viewManagerModel, MainMenuViewModel mainMenuViewModel, GalleryViewModel galleryViewModel) {
 
         // Notice how we pass this method's parameters to the Presenter.
-        SwitchToGalleryOutputBoundary switchToGalleryPresenter = new SwitchToGalleryPresenter(mainMenuViewModel, galleryViewModel, viewManagerModel);
+        SwitchToGalleryOutputBoundary switchToGalleryPresenter = new SwitchToGalleryPresenter(viewManagerModel, mainMenuViewModel, galleryViewModel);
         SwitchToGalleryInputBoundary switchToGalleryInteractor = new SwitchToGalleryInteractor(switchToGalleryPresenter);
 
         return new MainMenuController(switchToGalleryInteractor);

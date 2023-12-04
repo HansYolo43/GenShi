@@ -4,14 +4,19 @@ import Entities.Card;
 import Entities.User;
 import data_access.FileCardDataAccessObject;
 import interface_adapter.ViewManagerModel;
+import interface_adapter.gallery.GalleryController;
 import interface_adapter.gallery.GalleryState;
 import interface_adapter.gallery.GalleryViewModel;
 import use_case.gallery.Gallery;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.color.ColorSpace;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorConvertOp;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
@@ -25,10 +30,11 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
 
     // we have to keep track of two possible errors: cardView and back
     private final JButton backButton;
-    // TODO: add controllers
+    private GalleryController galleryController;
 
-    public GalleryView(GalleryViewModel viewModel) throws IOException {
+    public GalleryView(GalleryViewModel viewModel, GalleryController galleryController) throws IOException {
         this.viewModel = viewModel;
+        this.galleryController = galleryController;
         JLabel title = new JLabel("gallery");
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -62,11 +68,18 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                 }
             }
 
-            Image image = new ImageIcon(imgPath).getImage();
-            image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            Image image = ImageIO.read(new File(imgPath));
+            // convert to grayscale if the player does not have it
+            if (!entry.getValue()) {
+                ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
+                ColorConvertOp op = new ColorConvertOp(cs, null);
+                BufferedImage bi = op.filter((BufferedImage) image, null);
+                image = bi.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            }
+            else {
+                image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            }
             cardViewButton.setIcon(new ImageIcon(image));
-            buttons.add(cardViewButton);
-
             cardViewButton.addActionListener(
                     new ActionListener() {
                         public void actionPerformed(ActionEvent evt) {
@@ -74,14 +87,12 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                                 GalleryState currentState = viewModel.getState(); // not really needed here
                                 // use your controller(s)
                                 System.out.println("Card view button clicked");
-                                // TODO: for testing, remove later
+                                galleryController.execute(card);
                             }
                         }
                     }
             );
-            // Retrieve and print the card name and ID
-
-            //System.out.println("Card Name: " + card.getName() + ", Card ID: " + card.getId() + ", User Ownes it" + entry.getValue());
+            buttons.add(cardViewButton);
         }
 
 
