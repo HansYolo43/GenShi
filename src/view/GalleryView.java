@@ -37,6 +37,7 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
         this.galleryController = galleryController;
         this.viewModel.addPropertyChangeListener(this);
         JLabel title = new JLabel("gallery");
+        this.setLayout(new BorderLayout());
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
@@ -110,9 +111,18 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                     }
                 }
         );
+        title.setFont(new Font("Arial", Font.BOLD, 20));
+        title.setHorizontalAlignment(JLabel.CENTER);
+        this.add(title, BorderLayout.NORTH);
+
+        buttons.setLayout(new GridLayout(0, 4, 10, 10)); // Grid layout with margins
+        buttons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Padding
+
 
 
         this.add(buttons);
+        JScrollPane scrollPane = new JScrollPane(buttons);
+        this.add(scrollPane, BorderLayout.CENTER);
     }
 
     private boolean canLoadImage(String imagePath) {
