@@ -23,7 +23,7 @@ public class CardStatsViewModel extends ViewModel {
 
     @Override
     public void firePropertyChanged() {
-        //System.out.println(this.state.getDescription());
+
         support.firePropertyChange("state", null, this.state);
     }
 

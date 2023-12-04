@@ -1,13 +1,11 @@
 package interface_adapter.card_stats;
 
-import interface_adapter.gallery.GalleryState;
-
 public class CardStatsState {
 
-    private String name = null;
-    private String imgpath = null;
-    private String rarity = null;
-    private String description = null;
+    private String name ;
+    private String imgpath ;
+    private String rarity ;
+    private String description ;
 
     public CardStatsState(CardStatsState copy) {
         name = copy.name;

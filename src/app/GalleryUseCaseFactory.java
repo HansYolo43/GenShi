@@ -5,16 +5,10 @@ import interface_adapter.card_stats.CardStatsViewModel;
 import interface_adapter.gallery.GalleryController;
 import interface_adapter.gallery.GalleryPresenter;
 import interface_adapter.gallery.GalleryViewModel;
-import interface_adapter.main_menu.MainMenuController;
-import interface_adapter.main_menu.MainMenuViewModel;
-import interface_adapter.main_menu.SwitchToGalleryPresenter;
 import use_case.StatsGallery.StatsGalleryDataAccessInterface;
 import use_case.gallery.GalleryInputBoundary;
 import use_case.gallery.GalleryInteractor;
 import use_case.gallery.GalleryOutputBoundary;
-import use_case.main_menu.SwitchToGalleryInputBoundary;
-import use_case.main_menu.SwitchToGalleryInteractor;
-import use_case.main_menu.SwitchToGalleryOutputBoundary;
 import view.GalleryView;
 
 import java.io.IOException;
