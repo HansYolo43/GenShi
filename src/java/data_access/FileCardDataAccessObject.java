@@ -27,8 +27,6 @@ public class FileCardDataAccessObject implements LootboxUserDataAccessInterface,
 
     private final File Cardlist;
 
-    private String dbPath;
-
     private final DatabaseHelper databaseHelper;
 
     private User Commonuser;
@@ -45,35 +43,17 @@ public class FileCardDataAccessObject implements LootboxUserDataAccessInterface,
 
     }
 
-    public static String serialize(Card card) {
-        return card.getId() + "|" +
-                card.getName() + "|" +
-                card.getImageID() + "|" +
-                card.getimgpath() + "|" +
-                card.getStats().serializer() + "|" +
-//                card.getAttackStatOptions().stream().map(String::valueOf).collect(Collectors.joining(",")) + "|" +
-                card.getDesc().replace("\n", "\\n");
-    }
-
-    public static Card deserialize(String line) {
-        String[] parts = line.split("\\|");
-
-        int ID = Integer.parseInt(parts[0]);
-
-        String Name = parts[1];
-
-        int ImageID = Integer.parseInt(parts[2]);
-
-        String imgpath = parts[3];
-
-        Stats stats = Stats.deserialize(parts[4]);
-
-        String Description = parts[5];
+//    public static String serialize(Card card) {
+//        return card.getId() + "|" +
+//                card.getName() + "|" +
+//                card.getImageID() + "|" +
+//                card.getimgpath() + "|" +
+//                card.getStats().serializer() + "|" +
+////                card.getAttackStatOptions().stream().map(String::valueOf).collect(Collectors.joining(",")) + "|" +
+//                card.getDesc().replace("\n", "\\n");
+//    }
 
 
-        return new Card(ID, Name, ImageID, imgpath, Description, stats);
-
-    }
 
     public void saveallCards() {
         for (Card card : Cards.values()) {
@@ -81,23 +61,7 @@ public class FileCardDataAccessObject implements LootboxUserDataAccessInterface,
         }
     }
 
-    public void load() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(CardInfo))) {
-            String line;
 
-            while ((line = reader.readLine()) != null) {
-                Card card = deserialize(line);
-                Cards.put(card.getId(), card);
-                CardArray.add(card.getId());
-            }
-
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load card data", e);
-        }
-
-
-    }
 
     public void loadallcards(){
         ArrayList<Card> loadedCards = DatabaseHelper.loadCards();
@@ -139,12 +103,12 @@ public class FileCardDataAccessObject implements LootboxUserDataAccessInterface,
         return Cards.get(cardId);
     }
 
-    public void updateCard(Card card) {
-        if (Cards.containsKey(card.getId())) {
-            Cards.put(card.getId(), card);
-
-        }
-    }
+//    public void updateCard(Card card) {
+//        if (Cards.containsKey(card.getId())) {
+//            Cards.put(card.getId(), card);
+//
+//        }
+//    }
 
     public void setDescription(int cardId, String newDescription) {
         if (Cards.containsKey(cardId)) {
@@ -202,7 +166,7 @@ public class FileCardDataAccessObject implements LootboxUserDataAccessInterface,
     }
 
     public void addUser(User user) {
-        databaseHelper.saveUser(user);
+        DatabaseHelper.saveUser(user);
     }
 
     // Retrieve a user by their ID

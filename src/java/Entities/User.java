@@ -1,6 +1,7 @@
 package Entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class User {
@@ -41,9 +42,9 @@ public class User {
         return cards_owned;
     }
 
-    public void setCards_owned(ArrayList<Integer> cards_owned) {
-        this.cards_owned = cards_owned;
-    }
+//    public void setCards_owned(ArrayList<Integer> cards_owned) {
+//        this.cards_owned = cards_owned;
+//    }
 
     public Integer getUserid() {
         return userid;
@@ -78,6 +79,9 @@ public class User {
     }
 
     public void addownedcard(Integer cardid){cards_owned.add(cardid);}
+
+    public ArrayList<Integer> getownedcards() {return cards_owned;}
+
 }
 //    public HashMap<Integer, Card> getCard_level() {
 //        return Card_level;

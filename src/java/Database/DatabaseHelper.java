@@ -46,6 +46,7 @@ public class DatabaseHelper {
     public static void createTables() {
         createStatsTable();
         createCardsTable();
+        createuserTables();
     }
 
     private static void createStatsTable() {
@@ -242,8 +243,18 @@ public class DatabaseHelper {
     //User Implementation
 
     private static void createuserTables() {
-        String createUserTableSQL = "CREATE TABLE IF NOT EXISTS Users (...);";
-        String createUserCardsTableSQL = "CREATE TABLE IF NOT EXISTS UserCards (...);";
+        String createUserTableSQL = "CREATE TABLE IF NOT EXISTS Users ("
+                + "UserID INT PRIMARY KEY, "
+                + "Username VARCHAR(255), "
+                + "Password VARCHAR(255), "
+                + "UserLevel INT, "
+                + "Currency DECIMAL);";
+
+        String createUserCardsTableSQL = "CREATE TABLE IF NOT EXISTS UserCards ("
+                + "UserID INT, "
+                + "CardID INT, "
+                + "FOREIGN KEY (UserID) REFERENCES Users(UserID));";
+
         executeSql(createUserTableSQL);
         executeSql(createUserCardsTableSQL);
     }

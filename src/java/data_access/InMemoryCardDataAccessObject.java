@@ -17,11 +17,6 @@ public class InMemoryCardDataAccessObject {
         return Cards.get(cardId);
     }
 
-    public void updateCard(Card card) {
-        if (Cards.containsKey(card.getId())) {
-            Cards.put(card.getId(), card);
-        }
-    }
 
     public void setDescription(int cardId, String newDescription) {
         if (Cards.containsKey(cardId)) {

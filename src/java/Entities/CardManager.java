@@ -32,11 +32,4 @@ public class CardManager {
         return cards.size();
     }
 
-    public String toString() {
-        String result = "";
-        for (Card card : cards) {
-            result += card + "\n";
-        }
-        return result;
-    }
 }

@@ -23,23 +23,7 @@ public class Stats {
         this.rarity = rarity;
     }
 
-    public static Stats deserialize(String line) {
-        String[] parts = line.split(":");
 
-        int level = Integer.parseInt(parts[0]);
-
-        String affinity = parts[1];
-
-        int baseHP = Integer.parseInt(parts[2]);
-        int baseDEF = Integer.parseInt(parts[3]);
-        int baseATK = Integer.parseInt(parts[4]);
-        int baseCRIT = Integer.parseInt(parts[5]);
-        String rarity = parts[6];
-
-        return new Stats(level, affinity, baseHP, baseDEF, baseATK, baseCRIT, rarity);
-
-
-    }
 
     //getters below
     public int getLevel() {
@@ -77,12 +61,12 @@ public class Stats {
         rarity = rariy;
     }
 
-    public String serializer() {
-        return level + ":" +
-                affinity + ":" +
-                baseHP + ":" +
-                baseDEF + ":" +
-                baseATK + ":" +
-                baseCRIT + ":";
-    }
+//    public String serializer() {
+//        return level + ":" +
+//                affinity + ":" +
+//                baseHP + ":" +
+//                baseDEF + ":" +
+//                baseATK + ":" +
+//                baseCRIT + ":";
+//    }
 }

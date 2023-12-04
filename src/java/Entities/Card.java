@@ -34,9 +34,7 @@ public class Card {
         return stats;
     }
 
-    public String toString() {
-        return name + " " + imageID + " " + stats;
-    }
+
 
     public Integer getId() {
         return Id;
@@ -46,11 +44,10 @@ public class Card {
         return Desc;
     }
 
-    public void setrarity(String rarity){
-        stats.setRarity(rarity);
-
-    }
-
+//    public void setrarity(String rarity){
+//        stats.setRarity(rarity);
+//
+//    }
 
     public void setDesc(String newDescription) {
         Desc = newDescription;
@@ -62,6 +59,6 @@ public class Card {
     }
 
 
-    public void setName(String updatedTestCard) {this.name = name;
+    public void setName(String updatedTestCard) {this.name = updatedTestCard;
     }
 }
