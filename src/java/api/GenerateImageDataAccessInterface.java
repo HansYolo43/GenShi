@@ -97,5 +97,5 @@ public class GenerateImageDataAccessInterface {
             return new JSONObject(response.toString()).getJSONArray("data").getJSONObject(0).getString("url").trim();
         }
     }
-
 }
+

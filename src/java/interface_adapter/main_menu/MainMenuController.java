@@ -20,13 +20,13 @@ public class MainMenuController {
     }
 
     // for debugging
-    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor) {
-
-        this.switchToGalleryInteractor = switchToGalleryInteractor;
-        this.switchToGamblingInteractor = switchToGamblingInteractor;
-        this.switchToGenerateCardInteractor = null;
-        this.logoutInteractor = null;
-    }
+//    public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor) {
+//
+//        this.switchToGalleryInteractor = switchToGalleryInteractor;
+//        this.switchToGamblingInteractor = switchToGamblingInteractor;
+//        this.switchToGenerateCardInteractor = null;
+//        this.logoutInteractor = null;
+//    }
 
     // for debugging
     public MainMenuController(SwitchToGalleryInputBoundary switchToGalleryInteractor, SwitchToGamblingInputBoundary switchToGamblingInteractor, SwitchToGenerateCardInputBoundary SwitchToGenerateCardInteractor) {
