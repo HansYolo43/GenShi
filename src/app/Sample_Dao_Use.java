@@ -27,10 +27,11 @@ public class Sample_Dao_Use {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            GenerateCardView generateCardView = GenerateCardUseCaseFactory.createGenerateCardView(fileCardDao);
+            // TODO: sorry had to comment out because I added viewManagerModel as a parameter, otherwise no way to get back to main menu
+            //GenerateCardView generateCardView = GenerateCardUseCaseFactory.createGenerateCardView(fileCardDao);
 
             // Add the GenerateCardView to the frame
-            frame.add(generateCardView);
+            //frame.add(generateCardView);
 
             // Display the frame
             frame.pack();

@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 public class MainMenuViewModel extends ViewModel {
     public static final String GALLERY_BUTTON_LABEL = "Go to card gallery";
     public static final String GAMBLING_BUTTON_LABEL = "Go to gambling screen";
-    public static final String GAME_BUTTON_LABEL = "Go to game screen";
+    public static final String GENERATE_CARD_BUTTON_LABEL = "Go to generate card screen";
     public static final String LOGOUT_BUTTON_LABEL = "Log out";
 
     private MainMenuState state = new MainMenuState();

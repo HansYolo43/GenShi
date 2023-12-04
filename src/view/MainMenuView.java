@@ -1,6 +1,5 @@
 package view;
 
-import interface_adapter.card_stats.CardStatsState;
 import interface_adapter.main_menu.MainMenuController;
 import interface_adapter.main_menu.MainMenuState;
 import interface_adapter.main_menu.MainMenuViewModel;
@@ -37,14 +36,14 @@ public class MainMenuView extends JPanel implements ActionListener, PropertyChan
         // Create the buttons and add them to the button panel
         JButton galleryButton = createButton(MainMenuViewModel.GALLERY_BUTTON_LABEL, e -> mainMenuController.executeGallery());
         JButton gamblingButton = createButton(MainMenuViewModel.GAMBLING_BUTTON_LABEL, e -> mainMenuController.executeGambling());
-//        JButton gameButton = createButton(MainMenuViewModel.GAME_BUTTON_LABEL, e -> mainMenuController.executeGame());
+        JButton gameButton = createButton(MainMenuViewModel.GENERATE_CARD_BUTTON_LABEL, e -> mainMenuController.executeGenerateCard());
         JButton logoutButton = createButton(MainMenuViewModel.LOGOUT_BUTTON_LABEL, e -> mainMenuController.executeLogout());
 
         // Add each button to the panel with some vertical glue to push them together
         buttonPanel.add(Box.createVerticalGlue());
         addButtonToPanel(galleryButton, buttonPanel);
         addButtonToPanel(gamblingButton, buttonPanel);
-//        addButtonToPanel(gameButton, buttonPanel);
+        addButtonToPanel(gameButton, buttonPanel);
         addButtonToPanel(logoutButton, buttonPanel);
         buttonPanel.add(Box.createVerticalGlue());
 

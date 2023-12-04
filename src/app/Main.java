@@ -6,6 +6,7 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.card_stats.CardStatsViewModel;
 import interface_adapter.gallery.GalleryViewModel;
 import interface_adapter.gambling.GamblingViewModel;
+import interface_adapter.generatecard.GenerateCardViewModel;
 import interface_adapter.main_menu.MainMenuViewModel;
 import view.*;
 
@@ -47,16 +48,19 @@ public class Main {
         GalleryViewModel galleryViewModel = new GalleryViewModel();
         GamblingViewModel gamblingViewModel = new GamblingViewModel();
         CardStatsViewModel cardStatsViewModel = new CardStatsViewModel();
+        GenerateCardViewModel generateCardViewModel = new GenerateCardViewModel();
 
-        MainMenuView mainMenuView = MainMenuUseCaseFactory.create(viewManagerModel, mainMenuViewModel, galleryViewModel, gamblingViewModel);
+        MainMenuView mainMenuView = MainMenuUseCaseFactory.create(viewManagerModel, mainMenuViewModel, galleryViewModel, gamblingViewModel, generateCardViewModel);
         views.add(mainMenuView, mainMenuView.viewName);
         //TODO: remove the temp optimisation
-        GalleryView galleryView = GalleryUseCaseFactory.create(viewManagerModel, galleryViewModel, cardStatsViewModel, cardDAO);
-        views.add(galleryView, galleryView.viewName);
+//        GalleryView galleryView = GalleryUseCaseFactory.create(viewManagerModel, galleryViewModel, cardStatsViewModel, cardDAO);
+//        views.add(galleryView, galleryView.viewName);
         GamblingView gamblingView = GamblingUseCaseFactory.create(viewManagerModel, gamblingViewModel, cardDAO);
         views.add(gamblingView, gamblingView.viewName);
         CardStatsView cardStatsView = CardStatsUseCaseFactory.create(viewManagerModel, cardStatsViewModel);
         views.add(cardStatsView, cardStatsView.viewName);
+        GenerateCardView generateCardView = GenerateCardUseCaseFactory.createGenerateCardView(cardDAO, viewManagerModel);
+        views.add(generateCardView, generateCardView.viewName);
 
         viewManagerModel.setActiveView(mainMenuView.viewName);
         viewManagerModel.firePropertyChanged();

@@ -43,10 +43,9 @@ public class GenerateCardInteractor implements GenerateCardInputBoundary{
         Card generatedCard = fileCardDataAccessObject.getCard(CardID);
 
         presenter.presentGeneratedCard(generatedCard);
+    }
 
-
-
-
-
+    public void executeBack(){
+        presenter.prepareBackView();
     }
 }

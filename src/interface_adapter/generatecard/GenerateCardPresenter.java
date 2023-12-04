@@ -1,12 +1,15 @@
 package interface_adapter.generatecard;
 
 import Entities.Card;
+import interface_adapter.ViewManagerModel;
 import use_case.generatecard.GenerateCardOutputBoundary;
 
 public class GenerateCardPresenter implements GenerateCardOutputBoundary {
+    private ViewManagerModel viewManagerModel;
     private GenerateCardViewModel viewModel;
 
-    public GenerateCardPresenter(GenerateCardViewModel viewModel) {
+    public GenerateCardPresenter(ViewManagerModel viewManagerModel, GenerateCardViewModel viewModel) {
+        this.viewManagerModel = viewManagerModel;
         this.viewModel = viewModel;
     }
 
@@ -22,5 +25,10 @@ public class GenerateCardPresenter implements GenerateCardOutputBoundary {
         GenerateCardState state = viewModel.getState();
         state.setError(error);
         viewModel.setState(state);
+    }
+
+    public void prepareBackView(){
+        viewManagerModel.setActiveView("main_menu");
+        viewManagerModel.firePropertyChanged();
     }
 }
