@@ -35,6 +35,7 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
     public GalleryView(GalleryViewModel viewModel, GalleryController galleryController) throws IOException {
         this.viewModel = viewModel;
         this.galleryController = galleryController;
+        this.viewModel.addPropertyChangeListener(this);
         JLabel title = new JLabel("gallery");
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -88,6 +89,7 @@ public class GalleryView extends JPanel implements ActionListener, PropertyChang
                                 // use your controller(s)
                                 System.out.println("Card view button clicked");
                                 galleryController.execute(card);
+                                viewModel.firePropertyChanged();
                             }
                         }
                     }

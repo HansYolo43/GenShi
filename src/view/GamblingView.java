@@ -21,6 +21,7 @@ public class GamblingView extends JPanel implements ActionListener, PropertyChan
 
     public GamblingView(GamblingViewModel viewModel) {
         this.viewModel = viewModel;
+        this.viewModel.addPropertyChangeListener(this);
         JLabel title = new JLabel("gambling");
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

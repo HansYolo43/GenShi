@@ -19,11 +19,13 @@ public class GalleryPresenter implements GalleryOutputBoundary {
 
     public void prepareSuccessView(Card card) {
         CardStatsState state = cardStatsViewModel.getState();
+        System.out.println(card.getDesc());
         state.setName(card.getName());
         state.setRarity(card.getStats().getRarity());
         state.setDescription(card.getDesc());
         state.setImgpath(card.getimgpath());
         cardStatsViewModel.setState(state);
+        System.out.println(cardStatsViewModel.getState().getImgpath());
         cardStatsViewModel.firePropertyChanged();
         viewManagerModel.setActiveView(cardStatsViewModel.getViewName());
         viewManagerModel.firePropertyChanged();

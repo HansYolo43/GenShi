@@ -22,6 +22,7 @@ public class MainMenuView extends JPanel implements ActionListener, PropertyChan
 
     public MainMenuView(MainMenuViewModel viewModel, MainMenuController mainMenuController) {
         this.viewModel = viewModel;
+        this.viewModel.addPropertyChangeListener(this);
         JLabel title = new JLabel("main menu");
         title.setAlignmentX(CENTER_ALIGNMENT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
