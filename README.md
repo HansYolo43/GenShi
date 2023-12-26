@@ -1,8 +1,31 @@
 # MystiCards
 
+<div align="center">
+
+  <figure style="display: inline-block; text-align: center; margin-right: 20px;">
+    <img src="src/db/CardTBA/godzilla.png" alt="First Image" width="450"/>
+
+  </figure>
+
+  <figure style="display: inline-block; text-align: center; margin-left: 20px;">
+    <img src="src/db/CardTBA/img-SD4xfRmTuqBt80uUXmstxKtx.png" alt="Second Image" width="450"/>
+
+  </figure>
+
+</div>
+
 ## Introduction 
 
-MystiCards is a dynamic card game powered by the latest in AI and technology. Dive into an ever-evolving world of strategy and chance with unique, AI-generated cards. Built using clean architecture principles, MystiCards ensures a scalable, maintainable, and testable codebase, offering a robust and engaging experienc
+MystiCards is a dynamic card game powered by the latest in AI and technology. Dive into an ever-evolving world of strategy and chance with unique, AI-generated cards. Built using clean architecture principles, MystiCards ensures a scalable, maintainable, and testable codebase, offering a robust and engaging experience
+
+
+
+
+
+
+
+
+
 
 ## Features
 
