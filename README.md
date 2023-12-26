@@ -3,12 +3,12 @@
 <div align="center">
 
   <figure style="display: inline-block; text-align: center; margin-right: 20px;">
-    <img src="src/db/CardTBA/godzilla.png" alt="First Image" width="450"/>
+    <img src="src/db/CardTBA/godzilla.png" alt="First Image" width="400"/>
 
   </figure>
 
   <figure style="display: inline-block; text-align: center; margin-left: 20px;">
-    <img src="src/db/CardTBA/img-SD4xfRmTuqBt80uUXmstxKtx.png" alt="Second Image" width="450"/>
+    <img src="src/db/CardTBA/img-SD4xfRmTuqBt80uUXmstxKtx.png" alt="Second Image" width="400"/>
 
   </figure>
 
